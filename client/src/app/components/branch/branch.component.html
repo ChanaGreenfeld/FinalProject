@@ -1,0 +1,25 @@
+<input type="text" placeholder="חפש סניפים" (input)="searchFilter($event)" />
+
+<button *ngIf="this.show" (click)="showShortestWay()">
+  למציאת הסניף הקרוב אליך ביותר
+</button>
+<div *ngIf="!this.show">
+    <label>הכנס את הכתובת שלך</label>
+    <input class="searchInput" ngx-google-places-autocomplete placeholder="" (options)="(options)"   [formControl]="searchControl" />
+    
+        <button (click)="shortestWay()">מצא את הסניף הקרוב אלי ביותר</button>
+      </div>
+<table>
+  <thead>
+    <tr>
+      <th>שם סניף</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="filterBranches.length > 0">
+    <tr *ngFor="let branch of filterBranches">
+      <td>{{ branch.name }}</td>
+    </tr>
+  </tbody>
+</table>
+
+

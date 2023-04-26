@@ -1,0 +1,20 @@
+const express = require('express')
+const PORT=8000
+const branchControl = require('./controllers/branchesControllers')
+const usersControl = require('./controllers/userControllers')
+const managerControl = require('./controllers/managersControllers')
+const productsControl = require('./controllers/productsControllers')
+const categoryControl=require('./controllers/categoryControllers')
+const cors = require('cors')
+let app = express()
+app.use(cors())
+app.use(express.json())
+require('./dataBase')
+
+app.use('/api/branch', branchControl)
+app.use('/api/user', usersControl)
+app.use('/api/category', categoryControl)
+app.use('/api/manager', managerControl)
+app.use('/api/product', productsControl)
+
+app.listen(PORT, console.log(`listen to port ${PORT}`))

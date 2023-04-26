@@ -1,0 +1,17 @@
+<a routerLink="" class="tablinks" id="b" (click)="openCategory()">קטגוריות</a>
+<a routerLink="/branches" class="tablinks" id="b">סניפים</a>
+
+<select *ngIf="this.show" dir="rtl" (change)="getProductsByCategory($event)">
+    <option value="box">משחקי קופסא וחברה</option>
+    <option value="puzzle">משחקי פאזלים</option>
+    <option value="all"> כל הקטגוריות</option>
+    <option value="summer">קיץ</option>
+    <option value="trains&Vehicles">כלי רכב , רכבות וחניונים</option>
+    <option value="Bicycle&scooter">אופניים , קורקינטים וממונעים לילדים</option>
+    <option value="babys">צעצועים וציוד תינוקות ופעוטות</option>
+    <option value="AssemblyGames">משחקי קוביות והרכבה</option>
+    <option value="remote">על שלט</option>
+    <option value="dolls">בובות , בתי בובות ואביזרי משחק</option>
+    <option value="YardGames">משחקי חצר</option>
+    <option value="playingCards">משחקי קלפים</option>
+  </select>
