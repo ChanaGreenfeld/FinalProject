@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { category } from 'src/app/classes/category'
-import { CategoryService } from 'src/app/services/category.service'
 import { ProductsService } from 'src/app/services/products.service'
 
 @Component({
@@ -10,26 +8,30 @@ import { ProductsService } from 'src/app/services/products.service'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  categories: Array<category> = []
   show: boolean = false
 
-  constructor(private categoryServ: CategoryService,
-    private productServ:ProductsService,
+  constructor(private productServ:ProductsService,
     private router:Router) {}
 
   ngOnInit(): void {
-    this.categoryServ.getAllCategory().subscribe((result) => {
-      this.categories = result
-    });
   }
 
   openCategory() {
     this.show = true
   }
+
   getProductsByCategory(event: any) {
-    console.log(event.target.value)
-    this.productServ.getProductsByCategory(event.target.value).subscribe(result=>{
-          this.router.navigate(['viewproducts'])
-    })
+    // if(event.target.value=='all'){
+    //   this.productServ.allOrCat ='all' 
+    //   this.router.navigate(['viewproducts'], { queryParams: { category: event.target.value } })
+    // }
+    // else{
+      this.productServ.allOrCat =event.target.value
+      this.productServ.getProductsPaginationByCategory(1,event.target.value).subscribe(result=>{
+        debugger
+        this.router.navigate(['viewproducts'], { queryParams: { category: event.target.value } })
+      })
+    // }
+  
   }
 }

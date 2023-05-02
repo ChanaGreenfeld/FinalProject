@@ -1,4 +1,5 @@
 export class product {
+ 
   constructor(
     public nameCategory: String,
     public products: [

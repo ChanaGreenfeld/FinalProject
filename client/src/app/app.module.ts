@@ -10,14 +10,31 @@ import { ViewProductComponent } from './components/view-product/view-product.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BranchComponent } from './components/branch/branch.component';
 import { ShowWayComponent } from './components/show-way/show-way.component';
+import { GoogleMapsModule } from '@angular/google-maps'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule} from '@angular/material/button';
+import { MatTableModule} from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatIconModule} from '@angular/material/icon';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatCardModule} from '@angular/material/card'
+import { MatDialogModule} from '@angular/material/dialog'
+import{MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
+import {MatSelectModule} from '@angular/material/select';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component'
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ViewProductComponent,
     BranchComponent,
-    ShowWayComponent
+    ShowWayComponent,
+    PageNotFoundComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +44,22 @@ import { ShowWayComponent } from './components/show-way/show-way.component';
     GooglePlaceModule,
     FormsModule,
     ReactiveFormsModule,
-
+    BrowserModule,
+    GooglePlaceModule,
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    MatExpansionModule,
+    GoogleMapsModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

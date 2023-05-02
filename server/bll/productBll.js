@@ -62,7 +62,7 @@ const editProduct = async (codeProd, newProduct) => {
       { $set: { newProduct } },
       { new: true },
     )
-    return product
+    return product;
   } catch (error) {
     throw new Error(error)
   }
@@ -113,8 +113,52 @@ const deleteProduct = async (codeProd, nameCat) => {
   }
 }
 
+const getProductsPagination = async(pageNo)=>{
+  const pageSize = 20;
+  const skip = (pageNo - 1) * pageSize;
+  try {
+    const allProducts = await productsModel.aggregate([
+      { $unwind: '$products' },
+      { $skip: skip },
+      { $limit: pageSize },
+      { $group: { _id: null, products: { $push: '$products' } } }
+    ]);
+    
+    const totalItems = (await productsModel.aggregate([
+      { $unwind: '$products' },
+      { $group: { _id: null, totalProducts: { $sum: 1 } } }
+    ])[0] || {totalProducts: 0}).totalProducts;
+
+  return {
+      products: allProducts[0].products,
+      totalItems
+    };
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+const getProductsCategoryPagination = async(page,nameCategory)=>{
+  const limit = 12
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  try {
+    const results = await productsModel.findOne({ nameCategory: nameCategory });
+    const paginatedProducts = results.products.slice(startIndex, endIndex);
+    return paginatedProducts ;
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+
+
+
+
 module.exports = {
   getAll,
+  getProductsPagination,
+  getProductsCategoryPagination,
   getCatById,
   getProductById,
   getProductBySalary,

@@ -3,11 +3,9 @@ const usersModel = require("../models/usersModel")
 const getAll =async () => {
    return await usersModel.find({});
 };
-
 const getUserById = async(code) => {
     return await usersModel.findById(code) 
 };
-
 const addUser =async (newUser) => {
     const user = new usersModel({
         userName:newUser.UsersName,
@@ -21,7 +19,6 @@ const addUser =async (newUser) => {
       })
       await user.save()
 };
-
 const editUser =async (code,newUser) => {
     await usersModel.findByIdAndUpdate(code, {
         userName:newUser.UsersName,
@@ -34,10 +31,9 @@ const editUser =async (code,newUser) => {
         shoppingList:newUser.shoppingList
       })
 };
-
 const deleteUser =async (code) => {
     await usersModel.findByIdAndDelete(code)
 };
 
 
-module.exports = { getAll, getUserById ,editUser ,addUser, deleteUser};
+module.exports = {getAll, getUserById ,editUser ,addUser, deleteUser};

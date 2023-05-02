@@ -1,13 +1,20 @@
 <input type="text" placeholder="חפש סניפים" (input)="searchFilter($event)" />
 
-<button *ngIf="this.show" (click)="showShortestWay()">
+<button *ngIf="this.show" (click)="open()">
   למציאת הסניף הקרוב אליך ביותר
 </button>
 <div *ngIf="!this.show">
     <label>הכנס את הכתובת שלך</label>
-    <input class="searchInput" ngx-google-places-autocomplete placeholder="" (options)="(options)"   [formControl]="searchControl" />
-    
-        <button (click)="shortestWay()">מצא את הסניף הקרוב אלי ביותר</button>
+    <input class="searchInput" ngx-google-places-autocomplete placeholder="" #text (onAddressChange)="changeOrigin($event)" (options)="(options)"  />
+    <mat-form-field appearance="fill">
+      <mat-label>Travel mode</mat-label>
+      <mat-select #select (valueChange)="onSelect(select.value)" >
+        <mat-option *ngFor="let mode of modes" [value]="mode" >
+          {{mode}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+        <button (click)="showShortestWay()">הראה לי את נקודת האיסוף</button>
       </div>
 <table>
   <thead>

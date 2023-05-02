@@ -4,11 +4,9 @@ const managerModel = require("../models/managersModel");
 const getAll = async() => {
     return await managerModel.find({})
 }
-
 const getManagerById = async(code) => {
     return await managerModel.findById(code) 
-};
-
+}
 const addManager = async(newManager) => {
     const manager = new managerModel({
         userName:newManager.userName,
@@ -19,7 +17,6 @@ const addManager = async(newManager) => {
       })
       await manager.save()
 };
-
 const editManager = async(code,newManager) => {
     await managerModel.findByIdAndUpdate(code, {
         userName:newManager.userName,
@@ -29,7 +26,6 @@ const editManager = async(code,newManager) => {
         branchName: newManager.branchName
       })
 };
-
 const deleteManager =async (code) => {
     await managerModel.findByIdAndDelete(code)
 };

@@ -1,5 +1,6 @@
 const BranchesModel = require('../models/branchesModel')
 const { google, createClient } = require("@google/maps");
+const axios = require('axios');
 
 const getAll = async () => {
   return await BranchesModel.find({})
@@ -29,52 +30,38 @@ const deleteBranch = async(code) => {
 }
 
 const searchShortestWay=async(searchText , addresses)=>{
-    const googleMapsClient = createClient({
-      Promis : Promise,
-      key: 'Api',    
-    }); 
-    try {
-       const formattedOrigins = encodeURIComponent(searchText.replace(/\s+/g, "+"));
-
-      const formattedDestinations = addresses.map(add => encodeURIComponent(add.address.replace(/\s+/g, "+"))).join("|");
-      console.log(formattedDestinations);
-      const { json: { rows } } =  await googleMapsClient.distanceMatrix({
-        origins: formattedOrigins,
-        destinations: formattedDestinations,
-        units: "metric",
-      });
-      console.log(results);
-      let minDistance = null;
-      let closestAddressIndex = null;
-      rows[0].elements.forEach((element, index) => {
-        if (minDistance === null || element.distance.value < minDistance) {
-          minDistance = element.distance.value;
-          closestAddressIndex = index;
-        }
-      });
-      return addresses[closestAddressIndex];
-    } catch (err) {
-      console.error(err);
+  try {
+    const apiKey = 'AIzaSyBZqeGqfhUse9nkwrP_Whqe598ucDxyC4s';
+    const origins = encodeURI(searchText);
+    const destinations = encodeURI(addresses.map(obj => obj.address).join('|'));
+    const baseURL = 'https://maps.googleapis.com/maps/api'
+    const url = `${baseURL}/distancematrix/json?units=metric&origins=${origins}&destinations=${destinations}&key=${apiKey}`;
+    const response = await axios.get(url);
+    const elements = response.data.rows[0].elements;
+    let closestPlace = null;
+    let closestDistance = Infinity;
+    for (let i = 0; i < elements.length; i++) {
+      const distanceText = elements[i].distance.text;
+      const distanceValue = elements[i].distance.value;
+     
+      if (distanceValue < closestDistance) {
+        closestPlace = addresses[i];
+        closestDistance = distanceValue;
+        closestPlace.distance = distanceText;
+    
+      }
     }
-}
-// const search = async (searchText) => {
-//   const config = {
-//     method: 'get',
-//     url: `${process.env.GOOGLE_MAPS_BASE_URL}/maps/api/place/textsearch/json`,
-//     params: {
-//       language: 'iw',
-//       query: searchText,
-//       key:'AIzaSyAFNmGpWn7RFLdSEi0dZgW6EtytaA_P-LE'
-//     },
-//   }
-  
-//   const response = await axios(config)
-//   const nearby5Places = response.data.results.slice(0, 5)
-//   const formatForResult = nearby5Places.map((n) => {
-//     return { name: n.name, address: n.formatted_address }
-//   })
+      const geocodingUrl = `${baseURL}/geocode/json?address=${encodeURI(closestPlace.address)}&key=${apiKey}`;
+       const geocodingResponse = await axios.get(geocodingUrl);
+       const location = geocodingResponse.data.results[0].geometry.location;
+       closestPlace.lat = location.lat;
+       closestPlace.lng = location.lng;
+      return closestPlace;
+  } catch (error) {
+    console.error(error.message);
+  }
 
-//   await saveSearchText(searchText);
-//   return formatForResult
-// }
+}
+
 module.exports = { getAll, getBranchById, editBranch, addBranch, deleteBranch,searchShortestWay }
+ 

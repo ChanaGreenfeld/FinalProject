@@ -1,1 +1,11 @@
-<p>show-way works!</p>
+<div class="container">
+
+    <google-map height="400px" width="1000px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+        (mapMousemove)="move($event)" name="google map">
+        <map-marker [position]="center" [options]="markerOptions" name="marker"></map-marker>
+        <map-directions-renderer *ngIf="(directionsResults$ ) as directionsResults"
+        [directions]="directionsResults" id="direction"></map-directions-renderer>
+        
+    </google-map>
+    <div id="directionsList" ng-show="directions.showList" class="panel panel-primary"></div>
+    </div>
