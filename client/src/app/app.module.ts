@@ -25,7 +25,10 @@ import{MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 import {MatSelectModule} from '@angular/material/select';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component'
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { SaleComponent } from './components/sale/sale.component';
+import { AgeComponent } from './components/age/age.component';
+import { GiftcardComponent } from './components/giftcard/giftcard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,10 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     BranchComponent,
     ShowWayComponent,
     PageNotFoundComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    SaleComponent,
+    AgeComponent,
+    GiftcardComponent,
   ],
   imports: [
     BrowserModule,

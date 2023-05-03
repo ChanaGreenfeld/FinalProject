@@ -53,7 +53,6 @@ export class BranchComponent implements OnInit {
 
   openLocationDialog() {
     const dialogRef = this.dialog.open(ShowWayComponent);
-    debugger
     let instance = dialogRef.componentInstance;
     instance.center = this.origion;
     instance.destination=this.destination;

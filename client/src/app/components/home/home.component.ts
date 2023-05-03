@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { ProductsService } from 'src/app/services/products.service'
+import { UsersService } from 'src/app/services/users.service'
 
 @Component({
   selector: 'app-home',
@@ -8,30 +9,31 @@ import { ProductsService } from 'src/app/services/products.service'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  show: boolean = false
 
   constructor(private productServ:ProductsService,
-    private router:Router) {}
+    private usercate:UsersService) {}
 
   ngOnInit(): void {
   }
 
-  openCategory() {
-    this.show = true
+
+  
+
+
+  jwt(){
+   this.usercate.LoginUser("st lev","533184039").subscribe(res=>{
+    console.log(this.usercate.currentUser);
+   })
+
   }
 
-  getProductsByCategory(event: any) {
-    // if(event.target.value=='all'){
-    //   this.productServ.allOrCat ='all' 
-    //   this.router.navigate(['viewproducts'], { queryParams: { category: event.target.value } })
-    // }
-    // else{
-      this.productServ.allOrCat =event.target.value
-      this.productServ.getProductsPaginationByCategory(1,event.target.value).subscribe(result=>{
-        debugger
-        this.router.navigate(['viewproducts'], { queryParams: { category: event.target.value } })
-      })
-    // }
-  
+  jwt2(){
+    const token = sessionStorage.getItem('token');
+    
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const role = payload.role;
+      console.log(role);
+    }
   }
 }

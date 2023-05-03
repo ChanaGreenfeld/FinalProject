@@ -32,6 +32,14 @@ router.route("/getProductsBySalary").get(async function(req, res){
   let data = await productsBll.getProductBySalary()
   res.send(data)
 })
+
+router.route("/age/:age").get(async function(req, res){
+  let age = req.params.age;
+  console.log(age);
+  let data = await productsBll.getProductBySale(age);
+  res.send(data)
+})
+
 router.route("/getProductsByDate").get(async function(req, res){
   let data = await productsBll.getProductsLastYear()
   res.send(data)

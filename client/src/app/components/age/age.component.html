@@ -1,0 +1,40 @@
+<div>
+    <button value="0-2" (click)="age($event)">0-2</button>
+    <button value="2-4" (click)="age($event)">2-4</button>
+    <button value="4-6" (click)="age($event)">4-6</button>
+    <button value="6-8" (click)="age($event)">6-8</button>
+    <button value="8-10" (click)="age($event)">8-10</button>    
+    <button value="10-99" (click)="age($event)">10-99</button>    
+
+</div>
+
+
+
+<table dir="rtl" *ngIf="products.length > 0">
+    <thead>
+      <tr>
+        <th>שם מוצר</th>
+        <th>תיאור</th>
+        <th>מחיר</th>
+        <th>יחידות</th>
+        <th>תמונה</th>
+        <th>גיל</th>
+        <th>פופולרי</th>
+        <th>הנחה</th>
+        <th>תאריך</th>
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let prod of products" class="slide-up-fade-in">
+        <td>{{ prod.name }}</td>
+        <td>{{ prod.description }}</td>
+        <td>{{ prod.price }}</td>
+        <td>{{ prod.units }}</td>
+        <img src="{{ prod.pic }}" (click)="productDetails(prod._id)"/>
+        <td>{{ prod.age }}</td>
+        <td>{{ prod.populare }}</td>
+        <td>{{ prod.salary }}</td>
+        <td>{{ prod.date }}</td>
+      </tr>
+    </tbody>
+  </table>

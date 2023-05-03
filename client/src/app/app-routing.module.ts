@@ -4,12 +4,23 @@ import { ViewProductComponent } from './components/view-product/view-product.com
 import { BranchComponent } from './components/branch/branch.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { SaleComponent } from './components/sale/sale.component';
+import { AgeComponent } from './components/age/age.component';
+import { GiftcardComponent } from './components/giftcard/giftcard.component';
 
 const routes: Routes = [
-  {path:"viewproducts",component:ViewProductComponent},      
-   {path:"branches",component:BranchComponent},
-   {path:"productDetails",component:ProductDetailComponent},
-  {path:"**",component:PageNotFoundComponent}
+
+    { path: '', redirectTo: '', pathMatch: 'full' },
+    {path:"viewproducts",component:ViewProductComponent,title: 'מוצרים Toys Way'},  
+    {path:"branches",component:BranchComponent, title: 'סניפי הרשת'},
+    {path:"productDetails",component:ProductDetailComponent, title: 'פרטי מוצר'},
+    {path:"age",component:AgeComponent, title: 'תוצאות חיפוש לפי גיל'},
+    {path:"sale",component:SaleComponent, title: 'תוצאות חיפוש לפי  מוצרים בהנחה'},
+    {path:"giftCard",component:GiftcardComponent, title: 'כרטיס מתנה גיפט כארד'},
+  
+  {path:"**",component:PageNotFoundComponent},
+
+
 ];
 
 

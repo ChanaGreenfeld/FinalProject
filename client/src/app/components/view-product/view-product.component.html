@@ -1,4 +1,19 @@
-<table dir="rtl">
+
+<select dir="rtl" *ngIf="showCategory" (change)="getProductsByCategory($event)">
+  <option value="box">משחקי קופסא וחברה</option>
+  <option value="puzzle">משחקי פאזלים</option>
+  <option value="summer">קיץ</option>
+  <option value="trains&Vehicles">כלי רכב , רכבות וחניונים</option>
+  <option value="Bicycle&scooter">אופניים , קורקינטים וממונעים לילדים</option>
+  <option value="babys">צעצועים וציוד תינוקות ופעוטות</option>
+  <option value="AssemblyGames">משחקי קוביות והרכבה</option>
+  <option value="remote">על שלט</option>
+  <option value="dolls">בובות , בתי בובות ואביזרי משחק</option>
+  <option value="YardGames">משחקי חצר</option>
+  <option value="playingCards">משחקי קלפים</option>
+</select>
+
+<table dir="rtl" *ngIf="products.length > 0">
   <thead>
     <tr>
       <th>שם מוצר</th>
@@ -12,7 +27,7 @@
       <th>תאריך</th>
     </tr>
   </thead>
-  <tbody *ngIf="products.length > 0" data-test-id="searched-customers">
+  <tbody  data-test-id="searched-customers">
     <tr *ngFor="let prod of products" class="slide-up-fade-in">
       <td>{{ prod.name }}</td>
       <td>{{ prod.description }}</td>
@@ -42,4 +57,4 @@
   <button [disabled]="pageNo === 1" (click)="setPageNo(pageNo - 1); scrollToTop()">Prev</button>
   <button [disabled]="pageNo === i" *ngFor="let i of getPages()" (click)="setPageNo(i); scrollToTop()">{{ i }}</button>
   <button [disabled]="pageNo === totalPages()" (click)="setPageNo(pageNo + 1); scrollToTop()">Next</button>
-  </div>
+</div>

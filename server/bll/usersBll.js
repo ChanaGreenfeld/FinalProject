@@ -1,5 +1,7 @@
 const usersModel = require("../models/usersModel")
 
+
+
 const getAll =async () => {
    return await usersModel.find({});
 };
@@ -8,7 +10,7 @@ const getUserById = async(code) => {
 };
 const addUser =async (newUser) => {
     const user = new usersModel({
-        userName:newUser.UsersName,
+        userName:newUser.userName,
         password:newUser.password,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -28,12 +30,13 @@ const editUser =async (code,newUser) => {
         phone: newUser.phone,
         email: newUser.email,
         address: newUser.address,
-        shoppingList:newUser.shoppingList
+      //  shoppingList:newUser.shoppingList
       })
 };
+
 const deleteUser =async (code) => {
     await usersModel.findByIdAndDelete(code)
 };
 
 
-module.exports = {getAll, getUserById ,editUser ,addUser, deleteUser};
+module.exports = { getAll, getUserById ,editUser ,addUser, deleteUser};

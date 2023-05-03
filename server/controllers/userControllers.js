@@ -21,8 +21,9 @@ router.route("/EditUser/:id").put(async function(req, res){
   res.send(data)
 })
 router.route("/AddUser").post(async function(req, res){
-   let prod = req.body;
-  let data =await userBll.addUser(prod)
+   let user = req.body;
+   console.log(user);
+  let data =await userBll.addUser(user)
   res.send(data)
 })
 router.route("/DeleteUser/:id").delete(async function(req, res){
@@ -30,6 +31,5 @@ router.route("/DeleteUser/:id").delete(async function(req, res){
  let data =await userBll.deleteUser(pid)
  res.send(data)
 })
-
 
 module.exports=router

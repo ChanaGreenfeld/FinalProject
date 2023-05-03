@@ -7,9 +7,9 @@ const router=express.Router();
 router.post('/sendemail', async (req, res) => {
     const emailDatas = req.body;
     const emailData={
-        recipient:"b0504180093@gmail.com",
-        subject:"שלום ברכי!",
-        text :"מטורף לא? פה אמור להישלח קבלה עם פרטי הקניה"
+        recipient:emailDatas.recipient,
+        subject:emailDatas.subject,
+        text :emailDatas.text
     }
     try {
         const result = await nodeMailerBll.sendEmail(emailData);

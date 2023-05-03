@@ -1,0 +1,21 @@
+<div *ngIf="one">
+<input type="text" #id placeholder="הכנס סכום"/>
+<input type="button" (click)="oneStage(id)" value="בחירה"/>
+</div>
+
+<div *ngIf="two">
+<input type="button" value="למישהו אחר" (click)="toOther()"/> 
+<input type="button" value="לעצמי" (click)="toMe()"/> 
+<div *ngIf="other" >
+    <input type="text" #name placeholder="שם מקבל המתנה"/> 
+    <input type="text" #text placeholder="ברכה"/> 
+    <input type="text" #mail placeholder="מייל"/> 
+    <input type="text" #from placeholder="ממי המתנה? שם השולח"/> 
+    <input type="button" (click)="send(name,text,mail,from)" value="שליחה">
+</div>
+
+<div *ngIf="me">
+    <p>תמיד טוב לפנק את עצמך!</p>
+    <input type="button" (click)="send2()" value="שליחה">
+</div>
+</div>

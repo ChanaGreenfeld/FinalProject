@@ -31,7 +31,7 @@ const deleteBranch = async(code) => {
 
 const searchShortestWay=async(searchText , addresses)=>{
   try {
-    const apiKey = '';
+    const apiKey = 'AIzaSyBZqeGqfhUse9nkwrP_Whqe598ucDxyC4s';
     const origins = encodeURI(searchText);
     const destinations = encodeURI(addresses.map(obj => obj.address).join('|'));
     const baseURL = 'https://maps.googleapis.com/maps/api'
