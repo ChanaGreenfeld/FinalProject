@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "@coreui/angular": "^4.4.9",
     "@posterno/google-maps-html-marker": "^1.0.0",
     "googlemaps": "^1.12.0",
     "ngx-google-places-autocomplete": "^2.0.5",

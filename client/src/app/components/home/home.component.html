@@ -1,3 +1,4 @@
+
 <a routerLink="/viewproducts" [queryParams]=" { category: 'all' }" class="tablinks">toysWay</a> | 
 <a routerLink="/age"  class="tablinks">גיל</a> | 
 <a routerLink="/sale"  class="tablinks">Sale</a> | 
@@ -6,6 +7,18 @@
 
 
 <br/>
-<a routerLink="/branches" class="tablinks" id="b">סניפים</a>
+<a routerLink="/branches" class="tablinks" id="b">סניפים</a> | 
+<input type="text" placeholder="...אני רוצה לחפש" (input)="searchFilter($event)"/> |
+<a routerLink="/login" class="tablinks">👤</a>  | 
+<a routerLink="/shoppingList" class="tablinks">🛒</a> 
+
+
+<table>
+    <tbody *ngIf="filterProducts.length > 0">
+      <tr *ngFor="let fil of  filterProducts">
+        <td (click)="productDetail(fil._id)">{{ fil.name }}</td>
+      </tr>
+    </tbody>
+</table>
 
 

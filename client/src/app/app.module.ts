@@ -29,6 +29,11 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { SaleComponent } from './components/sale/sale.component';
 import { AgeComponent } from './components/age/age.component';
 import { GiftcardComponent } from './components/giftcard/giftcard.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { PaymentComponent } from './components/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +46,11 @@ import { GiftcardComponent } from './components/giftcard/giftcard.component';
     SaleComponent,
     AgeComponent,
     GiftcardComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    ShoppingListComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,10 +59,6 @@ import { GiftcardComponent } from './components/giftcard/giftcard.component';
     BrowserAnimationsModule,
     GooglePlaceModule,
     FormsModule,
-    ReactiveFormsModule,
-    BrowserModule,
-    GooglePlaceModule,
-    HttpClientModule,
     NoopAnimationsModule,
     MatInputModule,
     MatButtonModule,

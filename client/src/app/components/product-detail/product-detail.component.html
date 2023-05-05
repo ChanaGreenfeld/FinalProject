@@ -15,15 +15,16 @@
     </thead>
     <tbody  data-test-id="searched-customers">
       <tr class="slide-up-fade-in">
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.units }}</td>
-        <img src="{{ product.pic }}" />
-        <td>{{ product.age }}</td>
-        <td>{{ product.populare }}</td>
-        <td>{{ product.salary }}</td>
-        <td>{{ product.date }}</td>
+        <td>{{ producta.name }}</td>
+        <td>{{ producta.description }}</td>
+        <td>{{ producta.price }}</td>
+        <td>{{ producta.units }}</td>
+        <img src="{{ producta.pic }}" />
+        <td>{{ producta.age }}</td>
+        <td>{{ producta.populare }}</td>
+        <td>{{ producta.salary }}</td>
+        <td>{{ producta.date }}</td>
+        <td> <input type="button" (click)="addToshopping()" value="הוסף לסל"/></td>
       </tr>
     </tbody>
   </table>

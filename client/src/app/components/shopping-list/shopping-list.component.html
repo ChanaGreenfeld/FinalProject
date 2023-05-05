@@ -1,3 +1,6 @@
+<h2>סל קניות</h2>
+<p *ngIf="products.length==0">סל הקניות שלך ריק</p>
+
 <table dir="rtl" *ngIf="products.length > 0">
     <thead>
       <tr>
@@ -18,12 +21,19 @@
         <td>{{ prod.description }}</td>
         <td>{{ prod.price }}</td>
         <td>{{ prod.units }}</td>
-        <img src="{{ prod.pic }}" (click)="productDetails(prod._id)"/>
+        <img src="{{ prod.pic }}"/>
         <td>{{ prod.age }}</td>
         <td>{{ prod.populare }}</td>
         <td>{{ prod.salary }}</td>
         <td>{{ prod.date }}</td>
-        <td> <input type="button" (click)="addToshopping(prod)" value="הוסף לסל"/></td>
+        <td>
+          <input type="button" value="+" #plus (click)="change(plus.value,prod)"/>
+          <p>{{prod.item}}</p>
+          <input type="button" value="-" [disabled]="prod.item==1" #minus (click)="change(minus.value,prod)"/>
+        </td>
+        <td><input type="button" (click)="deleteFromShoppingList(prod,prod.item)" value="🗑️"/></td>
       </tr>
     </tbody>
   </table>
+<p>{{total}}</p>
+  <input type="button" *ngIf="products.length > 0" (click)="continue()" value="המשך לתשלום" />

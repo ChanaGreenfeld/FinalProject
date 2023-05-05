@@ -20,7 +20,7 @@ const getProductBySalary = async () => {
   }, [])
 }
 
-const getProductBySale = async (ageRange) => {
+const getProductByAge = async (ageRange) => {
   const [minAge, maxAge] = ageRange.split('-').map((age) => parseInt(age.trim()));
 
    const products = await productsModel.find({});
@@ -34,6 +34,14 @@ const getProductBySale = async (ageRange) => {
      }
    }
    return filteredProducts;
+}
+const getProductsPopular=async()=>{
+  const result = await productsModel.aggregate([
+    { $unwind: "$products" },  // Expand the "products" array into separate documents
+    { $sort: { "products.populare": -1 } },  // Sort by the "populare" field in descending order
+    { $limit: 15 }  // Limit the results to the first 15
+  ]);
+  return result.map(doc => doc.products);
 }
 
 const getProductsLastYear = async () => {
@@ -63,6 +71,17 @@ const getProductById = async (productId) => {
   })
   return result
 }
+const getProductByIdAndUpdatePopular = async (id) => {
+  const pro = await productsModel.findOne({ 'products._id': id })
+  pro.products.id(id).populare++;
+  return await pro.save();
+}
+const getProductByIdAndUpdateUnit = async (id) => {
+  const pro2 = await productsModel.findOne({ 'products._id': id })
+  if(pro2.products.id(id).units>0)
+  pro2.products.id(id).units--;
+  await pro2.save();
+}
 
 const editCategory = async (code, newProduct) => {
   await productsModel.findByIdAndUpdate(code, {
@@ -76,8 +95,6 @@ const editProduct = async (productId, newProduct) => {
   allProducts.forEach((category) => {
     category.products.forEach((product) => {
       if (product._id == productId) {
-        console.log(product)
-        console.log('=========================')
         ;(product.name = newProduct.name),
           (product.description = newProduct.description),
           (product.price = newProduct.price),
@@ -87,7 +104,6 @@ const editProduct = async (productId, newProduct) => {
           (product.populare = newProduct.populare),
           (product.salary = newProduct.salary),
           (product.date = newProduct.date)
-        console.log(product)
       }
     })
     category.save()
@@ -174,10 +190,13 @@ module.exports = {
   getProductsPagination,
   getProductsCategoryPagination,
   getCatById,
-  getProductBySale,
-  getProductById,
+  getProductByAge,
+    getProductById,
+    getProductByIdAndUpdateUnit,
+    getProductByIdAndUpdatePopular,
   getProductBySalary,
   getProductsLastYear,
+  getProductsPopular,
   getProductByNameCategory,
   editCategory,
   editProduct,

@@ -41,7 +41,6 @@ export class ShowWayComponent implements OnInit {
       travelMode: this.travelMode
     };
     this.mapDirectionsService.route(request).subscribe(data=>{
-      console.log(data)
       this.directionsResults$=data.result
     });
   }

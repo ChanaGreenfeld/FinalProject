@@ -1,3 +1,4 @@
+const userModel = require("../models/usersModel");
 const usersModel = require("../models/usersModel")
 
 
@@ -8,6 +9,11 @@ const getAll =async () => {
 const getUserById = async(code) => {
     return await usersModel.findById(code) 
 };
+
+const getUserByEmail=async(mail)=>{
+    return await usersModel.findOne({ email: mail })
+}
+
 const addUser =async (newUser) => {
     const user = new usersModel({
         userName:newUser.userName,
@@ -20,6 +26,7 @@ const addUser =async (newUser) => {
         shoppingList:newUser.shoppingList
       })
       await user.save()
+      return user;
 };
 const editUser =async (code,newUser) => {
     await usersModel.findByIdAndUpdate(code, {
@@ -33,10 +40,17 @@ const editUser =async (code,newUser) => {
       //  shoppingList:newUser.shoppingList
       })
 };
+const editUserShoppingList =async ( newShoppingList) => {
+return await userModel.findOneAndUpdate({
+    userName: newShoppingList.userName,
+    password:newShoppingList.password
+  },
+  { $push: { shoppingList: newShoppingList.shoppingList } })
+}
 
 const deleteUser =async (code) => {
     await usersModel.findByIdAndDelete(code)
 };
 
 
-module.exports = { getAll, getUserById ,editUser ,addUser, deleteUser};
+module.exports = { getAll, getUserById , getUserByEmail ,editUser,editUserShoppingList ,addUser, deleteUser};

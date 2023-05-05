@@ -11,11 +11,14 @@
     <input type="text" #text placeholder="ברכה"/> 
     <input type="text" #mail placeholder="מייל"/> 
     <input type="text" #from placeholder="ממי המתנה? שם השולח"/> 
-    <input type="button" (click)="send(name,text,mail,from)" value="שליחה">
+    <input type="button"  (click)="toPay(name.value,text.value,mail.value,from.value)" value="המשך"/>
 </div>
 
 <div *ngIf="me">
     <p>תמיד טוב לפנק את עצמך!</p>
-    <input type="button" (click)="send2()" value="שליחה">
+    <input type="button"  (click)="toPay2()" value="המשך"/>
 </div>
 </div>
+<input type="button" *ngIf="isTruePayment" (click)="send()" value="שליחה">
+
+<input type="button" *ngIf="isTruePayment2" (click)="send2()" value="שליחה">

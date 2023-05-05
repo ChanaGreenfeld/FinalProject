@@ -35,8 +35,7 @@ router.route("/getProductsBySalary").get(async function(req, res){
 
 router.route("/age/:age").get(async function(req, res){
   let age = req.params.age;
-  console.log(age);
-  let data = await productsBll.getProductBySale(age);
+  let data = await productsBll.getProductByAge(age);
   res.send(data)
 })
 
@@ -44,6 +43,23 @@ router.route("/getProductsByDate").get(async function(req, res){
   let data = await productsBll.getProductsLastYear()
   res.send(data)
 })
+router.route("/getProductsPopular").get(async function(req, res){
+  let data = await productsBll.getProductsPopular()
+  res.send(data)
+})
+
+router.route("/getProductByIdAndUpdatePopular/:id").get(async function(req, res){
+  let id = req.params.id;
+  let data = await productsBll.getProductByIdAndUpdatePopular(id)
+  res.send(data)
+})
+router.route("/getProductByIdAndUpdateUnit/:id").get(async function(req, res){
+  let id = req.params.id;
+  let data = await productsBll.getProductByIdAndUpdateUnit(id)
+  res.send(data)
+})
+
+
 router.route("/getProductsById/:id").get(async function(req, res){
   let pid = req.params.id;
   let data = await productsBll.getProductById(pid)
@@ -74,7 +90,6 @@ router.route("/DeleteCategory/:id").delete(async function(req, res){
 router.route("/DeleteProduct/:id").delete(async function(req, res){
   let pid = req.params.id;
   let CodeCat = req.body;
-  console.log(CodeCat);
  let data =await productsBll.deleteProduct(pid , CodeCat)
  res.send(data)
 })

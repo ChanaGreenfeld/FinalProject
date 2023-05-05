@@ -10,7 +10,7 @@ import { Place } from '../classes/place';
   providedIn: 'root'
 })
 export class BranchesService {
-
+  currentBranch :branch={name:'',address:''}
   shortedWay:any
   constructor(private httpClient: HttpClient) { }
   
@@ -23,6 +23,8 @@ export class BranchesService {
     return this.httpClient.get<Place>(`${environment.branchUrl}/shortestWay/`+ searchText , options ).pipe(
       tap((result) => {     
         this.shortedWay = result;
+        this.currentBranch.name=result.name;
+        this.currentBranch.address=result.address
       })
     )
   }

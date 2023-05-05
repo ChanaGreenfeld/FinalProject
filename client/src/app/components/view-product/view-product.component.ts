@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { arrProduct, product } from 'src/app/classes/product'
+import { arrProduct, arrProduct3, product } from 'src/app/classes/product'
 import { ProductsService } from 'src/app/services/products.service'
 import { ActivatedRoute, Router } from '@angular/router'
+import { ShoppingListService } from 'src/app/services/shopping-list.service'
+import { UsersService } from 'src/app/services/users.service'
 
 @Component({
   selector: 'app-view-product',
@@ -9,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router'
   styleUrls: ['./view-product.component.css'],
 })
 export class ViewProductComponent implements OnInit {
-  products: Array<any> = []
+  products: Array<any> =[]
   pageNo: number = 1
   pageSize: number = 20
   totalItems: number = 0
@@ -21,6 +23,8 @@ export class ViewProductComponent implements OnInit {
     private productServ: ProductsService,
     private route: ActivatedRoute,
     private router: Router,
+    private shoppingListServ:ShoppingListService,
+    private userServ:UsersService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +48,25 @@ export class ViewProductComponent implements OnInit {
     this.showCategory = true
     this.productServ.allOrCat = event.target.value
     this.getProductsPaginationByCategory()
+  }
+
+
+  addToshopping(product:arrProduct3){
+    if(this.userServ.currentUser){
+      const index =  this.shoppingListServ.shoppingList.indexOf(product);
+      if(index==-1){
+        product.item=1
+         this.shoppingListServ.shoppingList.push(product)
+      }
+      else{
+        this.shoppingListServ.shoppingList[index].item=this.shoppingListServ.shoppingList[index].item+1;
+      }
+      this.shoppingListServ.total += product.price
+      alert("מוצר נוסף בהצלחה")
+    }
+    else{
+      this.router.navigate(['login'])
+    }
   }
 
   // ========================Pagination For All Products=================================

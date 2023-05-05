@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Address } from 'ngx-google-places-autocomplete/objects/address'
 import { branch } from 'src/app/classes/branch'
 import { BranchesService } from 'src/app/services/branches.service'
 import { MatDialog } from '@angular/material/dialog';
 import { ShowWayComponent } from '../show-way/show-way.component'
+import { UsersService } from 'src/app/services/users.service'
+import { User } from 'src/app/classes/user'
 
 
 @Component({
@@ -36,9 +38,11 @@ export class BranchComponent implements OnInit {
 
   modes=["Driving","Walking","Bycicling","Transit"]
   mode= google.maps.TravelMode.DRIVING ;
-  constructor(private branchServ: BranchesService , private router:Router ,private Arouter : ActivatedRoute, public dialog: MatDialog) {}
+  constructor(private branchServ: BranchesService , private router:Router ,private Arouter : ActivatedRoute, public dialog: MatDialog, private userServ:UsersService) {}
 
+  user:User
   ngOnInit(): void {
+    this.user=this.userServ.currentUser
     this.branchServ.getAllBranches().subscribe((result) => {
       ;(this.branches = result), (this.filterBranches = result)
     })
@@ -57,7 +61,6 @@ export class BranchComponent implements OnInit {
     instance.center = this.origion;
     instance.destination=this.destination;
     instance.travelMode=this.mode;
-  console.log(instance);
   
   }
 
@@ -78,8 +81,7 @@ export class BranchComponent implements OnInit {
     else if(mode=="Transit")
     this.mode=google.maps.TravelMode.TRANSIT
     else this.mode=google.maps.TravelMode.DRIVING
-    
-    }
+  }
 
     open() {
       this.show = false    
@@ -99,4 +101,7 @@ export class BranchComponent implements OnInit {
     this.text = place.formatted_address    
   }
 
+  pay(){
+    this.router.navigate(['payment'],{ queryParams: { from: 'sh' }})
+  }
 }

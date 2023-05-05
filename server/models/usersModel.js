@@ -15,7 +15,6 @@ let UsersSchema = new mongoose.Schema({
      "shoppingList": [{
         "status": String,
         "branch": String,
-        "numBuild":Number,
         "date":String,
         "shoppingListProducts":[{
             "id":String

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
+import { product } from 'src/app/classes/product'
 import { ProductsService } from 'src/app/services/products.service'
+import { ShoppingListService } from 'src/app/services/shopping-list.service'
 import { UsersService } from 'src/app/services/users.service'
 
 @Component({
@@ -9,31 +11,46 @@ import { UsersService } from 'src/app/services/users.service'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private productServ:ProductsService,
-    private usercate:UsersService) {}
+  searchWord:string 
+  filterProducts: Array<any> = []
+  productsToSearch:Array<any>=[]
+  constructor(private productServ:ProductsService, 
+    private router:Router) {}
 
   ngOnInit(): void {
+    // this.productServ.getProductsPopular();
+    // this.productServ.getProductsByDate();
   }
 
 
-  
+  searchFilter(event: any): void {
+    this.searchWord = event.target.value
+    if(this.searchWord)
+    {
+      if(this.productServ.allproducttosearch2.length<1){
+         this.productServ.getAllProduct().subscribe(res=>{
+        this.productsToSearch=this.productServ.allproducttosearch2,
+        this.filterProducts=this.productServ.allproducttosearch2
+      })
+      }
+      else{
+        this.productsToSearch=this.productServ.allproducttosearch2,
+        this.filterProducts=this.productServ.allproducttosearch2
+      }
+        this.filterProducts = this.productsToSearch.filter((l) =>
+           l.name.startsWith(this.searchWord)
+         )
+       
 
-
-  jwt(){
-   this.usercate.LoginUser("st lev","533184039").subscribe(res=>{
-    console.log(this.usercate.currentUser);
-   })
-
-  }
-
-  jwt2(){
-    const token = sessionStorage.getItem('token');
-    
-    if (token) {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      const role = payload.role;
-      console.log(role);
+    } else {
+        this.filterProducts = this.productsToSearch;
     }
+  
   }
+  productDetail(id:number){
+    this.router.navigate(['productDetails'], { queryParams: { id: id } })
+  }
+
+
+
 }

@@ -8,19 +8,24 @@ import { environment } from 'src/environment/environment';
 })
 export class SendmailService {
 
+  isTruePayment:boolean=false
+  isTruePayment2:boolean=false
+  nameFromGiftCardToSend:string=''
+  textFromGiftCardToSend:string='' 
+  mailFromGiftCardToSend:string='' 
+  fromFromGiftCardToSend:string=''
+  sum: number = 0
+  
   constructor(private httpClient:HttpClient) { }
 
   sendEMail(subject:string ,  body:string , mail:string): Observable<any> {
-    debugger
+
     let bodye={
       recipient:mail,
       subject:subject,
       text :body
   }
-    return this.httpClient.post<any>(`${environment.sendEmailUrl}/sendemail`,bodye ).pipe(tap(res=>{
-      alert("emailSendSucceffully");
-      debugger
-    }))
+    return this.httpClient.post<any>(`${environment.sendEmailUrl}/sendemail`,bodye )
   }
 
 

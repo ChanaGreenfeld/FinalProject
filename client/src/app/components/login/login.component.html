@@ -1,0 +1,19 @@
+<form class="container" (ngSubmit)="login($event)">
+    <a routerLink="/login" class="tablinks">התחברות</a> |
+    <a routerLink="/register" class="tablinks">הרשמה</a> 
+
+    <h1>ברוכים השבים!</h1>
+    <h3>התחברות</h3>
+    <b>שם משתמש</b>
+    <input type="text" placeholder="שם משתמש"
+            name="username" required>
+<br>
+    <b>סיסמא</b>
+    <input type="password" placeholder="סיסמא"
+            name="password" required>
+            <br>
+
+    <button type="submit" class="button">כניסה</button>
+    <br>
+    <a routerLink="/forgotPass" class="tablinks">שכחתי סיסמא</a> 
+</form>

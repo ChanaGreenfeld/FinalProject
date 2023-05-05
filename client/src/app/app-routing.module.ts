@@ -7,20 +7,26 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { SaleComponent } from './components/sale/sale.component';
 import { AgeComponent } from './components/age/age.component';
 import { GiftcardComponent } from './components/giftcard/giftcard.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
-
-    { path: '', redirectTo: '', pathMatch: 'full' },
-    {path:"viewproducts",component:ViewProductComponent,title: 'מוצרים Toys Way'},  
-    {path:"branches",component:BranchComponent, title: 'סניפי הרשת'},
-    {path:"productDetails",component:ProductDetailComponent, title: 'פרטי מוצר'},
-    {path:"age",component:AgeComponent, title: 'תוצאות חיפוש לפי גיל'},
-    {path:"sale",component:SaleComponent, title: 'תוצאות חיפוש לפי  מוצרים בהנחה'},
-    {path:"giftCard",component:GiftcardComponent, title: 'כרטיס מתנה גיפט כארד'},
-  
-  {path:"**",component:PageNotFoundComponent},
-
-
+  {path: '', redirectTo: '', pathMatch: 'full' },
+  {path:"viewproducts",component:ViewProductComponent,title: 'מוצרים Toys Way'},  
+  {path:"branches",component:BranchComponent, title: 'סניפי הרשת'},
+  {path:"productDetails",component:ProductDetailComponent, title: 'פרטי מוצר'},
+  {path:"age",component:AgeComponent, title: 'תוצאות חיפוש לפי גיל'},
+  {path:"sale",component:SaleComponent, title: 'תוצאות חיפוש לפי  מוצרים בהנחה'},
+  {path:"giftCard",component:GiftcardComponent, title: 'כרטיס מתנה גיפט כארד'},
+  {path:"login",component:LoginComponent, title: 'כניסה'},
+  {path:"forgotPass",component:ForgotPasswordComponent, title: 'שכחתי סיסמא'},
+  {path:"register",component:RegisterComponent, title: 'הרשמה'},
+  {path:"shoppingList",component:ShoppingListComponent, title: 'סל קניות'},
+  {path:"payment",component:PaymentComponent, title: 'תשלום'},
+  {path:"**",component:PageNotFoundComponent, title: 'דף לא קיים'},
 ];
 
 

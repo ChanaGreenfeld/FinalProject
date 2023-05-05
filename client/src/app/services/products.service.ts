@@ -10,9 +10,22 @@ import { product } from '../classes/product';
 export class ProductsService {
   allOrCat :string =''
   allProducts :Array<any>=[]
+  allproducttosearch:Array<any>=[]
+  allproducttosearch2:Array<any>=[]
 
   constructor(private httpClient:HttpClient ) { }
  
+  getAllProduct(): Observable<Array<any>>{
+    return this.httpClient.get<Array<any>>(`${environment.productUrl}/GetAllProduct`).pipe(tap(res=>{
+      res.map(x=>this.allproducttosearch.push(x.products))
+    for (let i = 0; i < this.allproducttosearch.length; i++) {
+      for (let j = 0; j < this.allproducttosearch[i].length; j++) {
+        this.allproducttosearch2.push(this.allproducttosearch[i][j])
+      }      
+    }
+    }))
+  }
+
   getProductById(id:string): Observable<any> {
     return this.httpClient.get<any>(`${environment.productUrl}/getProductsById/`+id);
   }
@@ -29,7 +42,6 @@ export class ProductsService {
     const params = { pageNo: pageNo.toString(), nameCategory: nameCategory };
     return this.httpClient.get<any>(`${environment.productUrl}/categoryPage` , { params }).pipe
     (tap(res=>{
-      console.log(res);
     }));
 
   }
@@ -41,11 +53,21 @@ export class ProductsService {
   }
 
   getProductsBySale():Observable<any>{
-    return this.httpClient.get<any>(`${environment.productUrl}/getProductsBySalary`).pipe
-    (tap(res=>{
-    }));
+    return this.httpClient.get<any>(`${environment.productUrl}/getProductsBySalary`) 
   }
 
-  
- 
+  getProductsPopular(){
+    return this.httpClient.get<any>(`${environment.productUrl}/getProductsPopular`) 
+  }
+
+  getProductsByDate(){
+    return this.httpClient.get<any>(`${environment.productUrl}/getProductsByDate`) 
+  }
+
+  getProductByIdAndUpdatePopular(id:string):Observable<any>{
+    return this.httpClient.get<any>(`${environment.productUrl}/getProductByIdAndUpdatePopular/${id}`)
+  }
+  getProductByIdAndUpdateUnit(id:string):Observable<any>{
+    return this.httpClient.get<any>(`${environment.productUrl}/getProductByIdAndUpdateUnit/${id}`)
+  }
 }
