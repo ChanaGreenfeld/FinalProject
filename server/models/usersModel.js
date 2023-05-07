@@ -19,7 +19,7 @@ let UsersSchema = new mongoose.Schema({
         "shoppingListProducts":[{
             "id":String
         }]
-         }],
+    }],
 })
 let userModel = mongoose.model('users', UsersSchema)
 module.exports = userModel;

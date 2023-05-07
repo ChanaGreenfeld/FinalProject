@@ -34,6 +34,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ManagerComponent } from './components/manager/manager.component';
+import { BranchManagerComponent } from './components/branch-manager/branch-manager.component';
+import { MainManagerComponent } from './components/main-manager/main-manager.component';
+import { CategoryManagerFunctionsComponent } from './components/category-manager-functions/category-manager-functions.component';
+import { ProductsManagerFunctionsComponent } from './components/products-manager-functions/products-manager-functions.component';
+import { ViewOrdersStatusComponent } from './components/view-orders-status/view-orders-status.component';
+import { ManagerbranchmanagerComponent } from './components/managerbranchmanager/managerbranchmanager.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +58,13 @@ import { PaymentComponent } from './components/payment/payment.component';
     ForgotPasswordComponent,
     ShoppingListComponent,
     PaymentComponent,
+    ManagerComponent,
+    BranchManagerComponent,
+    MainManagerComponent,
+    CategoryManagerFunctionsComponent,
+    ProductsManagerFunctionsComponent,
+    ViewOrdersStatusComponent,
+    ManagerbranchmanagerComponent,
   ],
   imports: [
     BrowserModule,

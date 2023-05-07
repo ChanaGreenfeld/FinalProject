@@ -1,16 +1,22 @@
 
-<a routerLink="/viewproducts" [queryParams]=" { category: 'all' }" class="tablinks">toysWay</a> | 
-<a routerLink="/age"  class="tablinks">גיל</a> | 
-<a routerLink="/sale"  class="tablinks">Sale</a> | 
-<a routerLink="/giftCard"  class="tablinks">Gift Card</a>| 
-<a routerLink="/viewproducts" class="tablinks">קטגוריות</a> 
 
+<a routerLink="/viewproducts">קטגוריות</a> |
+<a routerLink="/viewproducts" [queryParams]=" { category: 'all' }">toysWay</a> | 
+<a routerLink="/age">גיל</a> |
+<a routerLink="/giftCard">Gift Card</a>| 
+<a routerLink="/sale">Sale</a>  
 
-<br/>
-<a routerLink="/branches" class="tablinks" id="b">סניפים</a> | 
+<img src="../../../assets/logo.png"/>
+
 <input type="text" placeholder="...אני רוצה לחפש" (input)="searchFilter($event)"/> |
-<a routerLink="/login" class="tablinks">👤</a>  | 
-<a routerLink="/shoppingList" class="tablinks">🛒</a> 
+<a routerLink="/login" >👤</a>  | 
+<a routerLink="/shoppingList">🛒</a> |
+<a routerLink="/branches">סניפים</a> | 
+<a routerLink="/about">אודות</a> 
+
+
+
+
 
 
 <table>

@@ -8,11 +8,13 @@ router.route("/GetAllManagers").get(async function (req, res){
   let data = await managerBll.getAll();
    res.send(data);
 });
+
 router.route("/ /:id").get(async function(req, res){
   let pid = req.params.id;
   let data = await managerBll.getManagerById(pid)
   res.send(data)
 })
+
 router.route("/EditManager/:id").put(async function(req, res){
   let pid = req.params.id;
   let manager = req.body;

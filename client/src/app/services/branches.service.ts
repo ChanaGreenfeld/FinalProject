@@ -29,6 +29,10 @@ export class BranchesService {
     )
   }
 
-
-
+  editBranch(id:string , branch:branch):Observable<branch>{
+    return this.httpClient.put<branch>(`${environment.branchUrl}/EditBranches/`+id,branch);
+  }
+  addBranch(branch:branch):Observable<branch>{
+    return this.httpClient.post<branch>(`${environment.branchUrl}/AddBranch` ,branch);
+  }
 }

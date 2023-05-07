@@ -1,0 +1,31 @@
+<table dir="rtl" *ngIf="branches.length > 0">
+    <thead>
+      <tr>
+        <th>שם</th>
+        <th>כתובת</th>
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let branch of branches" class="slide-up-fade-in">
+        <td>{{ branch.name }}</td>
+        <td>{{ branch.address }}</td>
+        <td><input type="button" (click)="toEdit(branch)" value="🖋️"/></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<form *ngIf="flagEdit">
+    <p>עריכת סניף</p>
+    <input type="text" value="{{branchToEdit.name}}" #name/>
+    <input type="text" value="{{branchToEdit.address}}" #address/>
+<input type="button" value="עריכה" (click)="editbranch(name.value,address.value)"/>
+</form>
+
+<button (click)="changeAddFlag()">הוסף  סניף</button>
+
+<form *ngIf="flagAdd">
+    <p>הוספת  סניף</p>
+    <input type="text" placeholder="הכנס שם סניף" #name/>
+    <input type="text" placeholder="הכנס כתובת " #address/>
+<input type="button" value="הוספה" (click)="addBranch(name.value,address.value)"/>
+</form>

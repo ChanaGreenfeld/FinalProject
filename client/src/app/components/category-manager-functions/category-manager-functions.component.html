@@ -1,0 +1,28 @@
+<input type="button" value="הוספת קטגוריה" (click)="toAdd()"/>
+
+
+
+<table dir="rtl" *ngIf="categories.length > 0">
+    <thead>
+      <tr>
+        <th>שם קטגוריה </th>
+
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let cat of categories" class="slide-up-fade-in">
+        <td>{{ cat.nameCategory }}</td>
+        <input type="button" value="🗑️" (click)="deleteCategory(cat._id)"/>
+        <input type="button" value="🖋️"  (click)="toEdit(cat._id)"/>
+      </tr>
+    </tbody>
+  </table>
+
+<form *ngIf="flagAdd">
+    <input type="text" placeholder="הכנס שם קטגוריה שברצונך להוסיף..." #name/>
+    <input type="button" value="הוסף" (click)="addCategory(name.value)"/>
+</form>
+<form *ngIf="flagEdit">
+    <input type="text" placeholder="הכנס שם קטגוריה חדש בכדי לעדכן..." #name/>
+    <input type="button" value="עדכן" (click)="editCategory(name.value)"/>
+</form>

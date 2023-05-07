@@ -7,6 +7,11 @@ router.route("/GetAllProduct").get(async function (req, res){
   let data = await productsBll.getAll();
    res.send(data);
 });
+router.route("/GetAllCategory").get(async function (req, res){
+  let data = await productsBll.getAllCategories();
+   res.send(data);
+});
+
 router.route("/page/:page").get(async function(req, res){
   let page = req.params.page;
  let data = await productsBll.getProductsPagination(page)
@@ -23,11 +28,13 @@ router.route("/GetProductsByCatId/:id").get(async function(req, res){
   let data = await productsBll.getCatById(pid)
   res.send(data)
 })
+
 router.route("/getProductsByNameCategory/:name").get(async function(req, res){
   let name = req.params.name;
   let data = await productsBll.getProductByNameCategory(name)
   res.send(data)
 })
+
 router.route("/getProductsBySalary").get(async function(req, res){
   let data = await productsBll.getProductBySalary()
   res.send(data)
@@ -66,9 +73,9 @@ router.route("/getProductsById/:id").get(async function(req, res){
   res.send(data)
 })
 router.route("/EditCategory/:id").put(async function(req, res){
-  let pid = req.params.id;
-  let prod = req.body;
-  let data =await productsBll.editCategory(pid,prod);
+  let id = req.params.id;
+  let newName = req.body;
+  let data =await productsBll.editCategory(id,newName);
   res.send(data)
 })
 router.route("/EditProduct/:id").put(async function(req, res){
@@ -77,20 +84,26 @@ router.route("/EditProduct/:id").put(async function(req, res){
   let data =await productsBll.editProduct(pid,prod);
   res.send(data)
 })
+router.route("/AddCategory").post(async function(req, res){
+  let nameCat = req.body;
+ let data =await productsBll.addCategory(nameCat)
+ res.send(data)
+})
+
 router.route("/AddProduct").post(async function(req, res){
   let prod = req.body;
  let data =await productsBll.addProduct(prod)
  res.send(data)
 })
 router.route("/DeleteCategory/:id").delete(async function(req, res){
-  let pid = req.params.id;
- let data =await productsBll.deleteCategory(pid)
+  let id = req.params.id;
+ let data =await productsBll.deleteCategory(id)
  res.send(data)
 })
-router.route("/DeleteProduct/:id").delete(async function(req, res){
+router.route("/DeleteProduct/:id/:name").delete(async function(req, res){
   let pid = req.params.id;
-  let CodeCat = req.body;
- let data =await productsBll.deleteProduct(pid , CodeCat)
+  let nameCat = req.params.name;
+ let data =await productsBll.deleteProduct(pid , nameCat)
  res.send(data)
 })
 

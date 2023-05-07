@@ -1,0 +1,10 @@
+.mat-card ,form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+.mat-form-field, submit{
+    display: flex;
+    width: 80%;
+}

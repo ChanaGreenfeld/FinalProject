@@ -14,6 +14,16 @@ const getUserByEmail=async(mail)=>{
     return await usersModel.findOne({ email: mail })
 }
 
+const getByBranch=async(branch)=>{
+    return await usersModel.find({
+        "shoppingList": {
+          $elemMatch: { "branch": branch }
+        }
+    })
+}
+
+
+
 const addUser =async (newUser) => {
     const user = new usersModel({
         userName:newUser.userName,
@@ -53,4 +63,4 @@ const deleteUser =async (code) => {
 };
 
 
-module.exports = { getAll, getUserById , getUserByEmail ,editUser,editUserShoppingList ,addUser, deleteUser};
+module.exports = { getAll, getUserById ,getByBranch , getUserByEmail ,editUser,editUserShoppingList ,addUser, deleteUser};

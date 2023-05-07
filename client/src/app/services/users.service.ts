@@ -2,20 +2,33 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { User } from '../classes/user';
+import { User, currentUser } from '../classes/user';
 import { BranchesService } from './branches.service';
 import { ShoppingListComponent } from '../components/shopping-list/shopping-list.component';
 import { ShoppingListService } from './shopping-list.service';
 import { ProductsService } from './products.service';
+import { Manager } from '../classes/manager';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
+  currentUser:currentUser
+
+  mainManager:Manager={
+    userName:"manager",
+     password:"m1122",
+     firstName:"yoav" ,
+     lastName: "Tzur" ,
+     branchName: "tel Aviv"
+  }
+
+
   constructor(private httpClient:HttpClient, private branhServ:BranchesService , private shoppingServ:ShoppingListService ,private productServ:ProductsService) { }
-  currentUser:any
+
    arrIdOfShoppingBagProducts:any =[]
+
 
   LoginUser(usemail:string,uspass:string):Observable<any>{
       let obj= {
@@ -27,12 +40,17 @@ export class UsersService {
      
   }
 
+
+  getAllUsers():Observable<Array<User>>{
+    return this.httpClient.get<Array<User>>(`${environment.userUrl}/GetAllUsers`)
+  }
+
   getUserByMail(mail:string):Observable<any>{
     return this.httpClient.get<any>(`${environment.userUrl}/GetUserByMail/`+mail)
   }
 
-  addUser(user:any):Observable<Array<User>>{
-    return this.httpClient.post<Array<User>>(`${environment.userUrl}/AddUser`,user).pipe(tap(res=>{
+  addUser(user:any):Observable<currentUser>{
+    return this.httpClient.post<currentUser>(`${environment.userUrl}/AddUser`,user).pipe(tap(res=>{
       this.currentUser=res
     }))
   }
@@ -64,8 +82,8 @@ export class UsersService {
       }
     }
 
-    return this.httpClient.post<Array<any>>(`${environment.userUrl}/EditUserShoppingList`,add).pipe(tap(res=>{
-      this.currentUser=res
+    return this.httpClient.post< Array<User>>(`${environment.userUrl}/EditUserShoppingList`,add).pipe(tap(res=>{
+
     }))
   }
 

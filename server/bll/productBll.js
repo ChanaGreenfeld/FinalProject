@@ -4,6 +4,12 @@ const getAll = async () => {
   return await productsModel.find({})
 }
 
+const getAllCategories = async () => {
+  const categories = await productsModel.find({}, { nameCategory: 1 });
+  const categoryIds = categories.map(cat => ({ nameCategory: cat.nameCategory, _id: cat._id }));
+  return categoryIds;
+}
+
 const getCatById = async (code) => {
   return await productsModel.findById(code)
 }
@@ -83,10 +89,9 @@ const getProductByIdAndUpdateUnit = async (id) => {
   await pro2.save();
 }
 
-const editCategory = async (code, newProduct) => {
-  await productsModel.findByIdAndUpdate(code, {
-    nameCategory: newProduct.nameCategory,
-    products: newProduct.products,
+const editCategory = async (id, newname) => {
+  await productsModel.findByIdAndUpdate(id, {
+    nameCategory: newname.nameCategory,
   })
 }
 
@@ -110,6 +115,13 @@ const editProduct = async (productId, newProduct) => {
   })
 }
 
+const addCategory=async(name)=>{
+  const category = new productsModel({
+    nameCategory:name.nameCategory
+  })
+  await category.save()
+}
+
 const addProduct = async (newProduct) => {
   const prod = await productsModel.findOne({
     nameCategory: newProduct.nameCategory,
@@ -128,14 +140,14 @@ const addProduct = async (newProduct) => {
   }
 }
 
-const deleteCategory = async (code) => {
-  await productsModel.findByIdAndDelete(code)
+const deleteCategory = async (id) => {
+  await productsModel.findByIdAndDelete(id)
 }
 
 const deleteProduct = async (codeProd, nameCat) => {
   try {
     const product = await productsModel.findOneAndUpdate(
-      { nameCategory: nameCat.nameCategory },
+      { nameCategory: nameCat },
       { $pull: { products: { _id: codeProd } } },
       { new: true },
     )
@@ -187,13 +199,14 @@ const getProductsCategoryPagination = async (page, nameCategory) => {
 
 module.exports = {
   getAll,
+  getAllCategories,
   getProductsPagination,
   getProductsCategoryPagination,
   getCatById,
   getProductByAge,
-    getProductById,
-    getProductByIdAndUpdateUnit,
-    getProductByIdAndUpdatePopular,
+  getProductById,
+  getProductByIdAndUpdateUnit,
+  getProductByIdAndUpdatePopular,
   getProductBySalary,
   getProductsLastYear,
   getProductsPopular,
@@ -201,6 +214,7 @@ module.exports = {
   editCategory,
   editProduct,
   addProduct,
+  addCategory,
   deleteProduct,
   deleteCategory,
 }

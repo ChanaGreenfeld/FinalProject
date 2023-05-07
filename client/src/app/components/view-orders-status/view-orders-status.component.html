@@ -1,0 +1,20 @@
+<table dir="rtl" *ngIf="usersss.length > 0">
+    <thead>
+      <tr>
+        <th>שם </th>
+        <th>סטטוס הזמנה</th>
+        <th>סניף</th>
+        <th>תאריך</th>
+        <th>כמות מוצרים</th>
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let us of usersss" class="slide-up-fade-in">
+        <td>{{ us.fullname }}</td>
+        <td>{{ us.status }}</td>
+        <td>{{ us.branch }}</td>
+        <td>{{ us.branch }}</td>
+        <td>{{ us.shllength }}</td>
+      </tr>
+    </tbody>
+  </table>

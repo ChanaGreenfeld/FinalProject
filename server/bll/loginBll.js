@@ -38,8 +38,6 @@ const user = require('./usersBll');
             return;
           }
 
-       
-     
     })
 }
 module.exports = { Login};

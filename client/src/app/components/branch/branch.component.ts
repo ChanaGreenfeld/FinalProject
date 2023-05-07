@@ -6,7 +6,7 @@ import { BranchesService } from 'src/app/services/branches.service'
 import { MatDialog } from '@angular/material/dialog';
 import { ShowWayComponent } from '../show-way/show-way.component'
 import { UsersService } from 'src/app/services/users.service'
-import { User } from 'src/app/classes/user'
+import { User, currentUser } from 'src/app/classes/user'
 
 
 @Component({
@@ -40,7 +40,7 @@ export class BranchComponent implements OnInit {
   mode= google.maps.TravelMode.DRIVING ;
   constructor(private branchServ: BranchesService , private router:Router ,private Arouter : ActivatedRoute, public dialog: MatDialog, private userServ:UsersService) {}
 
-  user:User
+  user:currentUser
   ngOnInit(): void {
     this.user=this.userServ.currentUser
     this.branchServ.getAllBranches().subscribe((result) => {

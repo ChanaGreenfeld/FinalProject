@@ -7,11 +7,17 @@ const router=express.Router();
 
 router.route("/GetAllUsers").get(async function (req, res){
   let data = await userBll.getAll();
-   res.send(data);
+  res.send(data);
 });
 router.route("/GetUserById/:id").get(async function(req, res){
   let pid = req.params.id;
   let data = await userBll.getUserById(pid)
+  res.send(data)
+})
+
+router.route("/getBranchByName/:branch").get(async function(req, res){
+  let branch = req.params.branch;
+  let data = await userBll.getByBranch(branch)
   res.send(data)
 })
 

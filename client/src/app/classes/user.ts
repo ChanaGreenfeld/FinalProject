@@ -23,3 +23,21 @@ export class User{
         }]
     ) {   }
 }  
+export class currentUser{
+  
+    constructor(
+       public userName :string,
+       public password:string,
+       public firstName:string,
+       public lastName:string,
+       public phone:string,
+       public email :string,
+       public address: {
+        city: String,
+        street: String,
+        numBuild:Number,
+         },
+         public  shoppingList: []
+       
+    ) {   }
+}  

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { product } from 'src/app/classes/product'
 import { ProductsService } from 'src/app/services/products.service'
-import { ShoppingListService } from 'src/app/services/shopping-list.service'
 import { UsersService } from 'src/app/services/users.service'
 
 @Component({
@@ -14,13 +12,14 @@ export class HomeComponent implements OnInit {
   searchWord:string 
   filterProducts: Array<any> = []
   productsToSearch:Array<any>=[]
-  constructor(private productServ:ProductsService, 
+
+  constructor(private productServ:ProductsService,private  userServ:UsersService,
     private router:Router) {}
 
   ngOnInit(): void {
     // this.productServ.getProductsPopular();
     // this.productServ.getProductsByDate();
-  }
+    }
 
 
   searchFilter(event: any): void {
@@ -47,6 +46,7 @@ export class HomeComponent implements OnInit {
     }
   
   }
+  
   productDetail(id:number){
     this.router.navigate(['productDetails'], { queryParams: { id: id } })
   }

@@ -1,0 +1,111 @@
+<table dir="rtl" *ngIf="products.length > 0">
+    <thead>
+      <tr>
+        <th>שם מוצר</th>
+        <th>תיאור</th>
+        <th>מחיר</th>
+        <th>יחידות</th>
+        <th>תמונה</th>
+        <th>גיל</th>
+        <th>פופולרי</th>
+        <th>הנחה</th>
+        <th>תאריך</th>
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let prod of product" class="slide-up-fade-in">
+        <td>{{ prod.nameCategory }}</td>
+        <td>{{ prod.name }}</td>
+        <td>{{ prod.description }}</td>
+        <td>{{ prod.price }}</td>
+        <td>{{ prod.units }}</td>
+        <img src="{{ prod.pic }}"/>
+        <td>{{ prod.age }}</td>
+        <td>{{ prod.populare }}</td>
+        <td>{{ prod.salary }}</td>
+        <td>{{ prod.date }}</td>
+        <td><input type="button" (click)="toEdit(prod)" value="🖋️"/>
+        <td><input type="button" (click)="deleteProduct(prod)" value="🗑️"/>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="changeAddFlag()">Add</button>
+
+  <mat-card *ngIf="flagAdd">
+      <mat-card-header  align="end">
+          <mat-card-title>הוספת מוצר</mat-card-title>
+          <mat-card-subtitle>פרטי המוצר</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+          <form (ngSubmit)="addProduct()">
+                  <mat-form-field appearance="outline">
+                      <mat-label>שם קטגוריה</mat-label>
+                      <input matInput [(ngModel)]="categoryName" name="category" #category>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                      <mat-label>שם מוצר</mat-label>
+                      <input matInput [(ngModel)]="newProduct.name" name="name" #name>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                      <mat-label>מחיר</mat-label>
+                      <input matInput [(ngModel)]="newProduct.price" name="price" #price>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                      <mat-label>תאור</mat-label>
+                      <input matInput [(ngModel)]="newProduct.description" name="description" #description>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                      <mat-label>מלאי</mat-label>
+                      <input matInput [(ngModel)]="newProduct.units"  name="units" #units>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                      <mat-label>גיל</mat-label>
+                      <input matInput [(ngModel)]="newProduct.age"  name="age" #age>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>הנחה</mat-label>
+                    <input matInput [(ngModel)]="newProduct.salary"  name="salary" #salary>
+                </mat-form-field>
+                  <button type="submit" class="submit" mat-raised-button color="primary">הוספה</button>
+          </form>
+      </mat-card-actions>
+  </mat-card>
+  
+  <mat-card *ngIf="flagEdit">
+    <mat-card-header  align="end">
+        <mat-card-title>עריכת מוצר</mat-card-title>
+        <mat-card-subtitle>פרטי המוצר</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+        <form (ngSubmit)="editProduct()">
+                <mat-form-field appearance="outline">
+                    <mat-label>שם מוצר</mat-label>
+                    <input matInput [(ngModel)]="toeditProduct.name"   name="name" #name>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>מחיר</mat-label>
+                    <input matInput [(ngModel)]="toeditProduct.price"  name="price" #price>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>תאור</mat-label>
+                    <input matInput [(ngModel)]="toeditProduct.description" name="description" #description>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>מלאי</mat-label>
+                    <input matInput [(ngModel)]="toeditProduct.units" name="units" #units>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>גיל</mat-label>
+                    <input matInput [(ngModel)]="toeditProduct.age"  name="age" #age>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>הנחה</mat-label>
+                    <input matInput [(ngModel)]="toeditProduct.salary"  name="salary" #salary>
+                </mat-form-field>
+                <button type="submit" class="submit" mat-raised-button color="primary">עריכה</button>
+        </form>
+    </mat-card-actions>
+</mat-card>

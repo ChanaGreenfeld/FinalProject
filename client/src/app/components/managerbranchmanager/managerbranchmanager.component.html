@@ -1,0 +1,48 @@
+<table dir="rtl" *ngIf="managers.length > 0">
+    <thead>
+      <tr>
+        <th>שם פרטי</th>
+        <th>משפחה</th>
+        <th>סניף</th>
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let manag of managers" class="slide-up-fade-in">
+        <td>{{ manag.firstName }}</td>
+        <td>{{ manag.lastName }}</td>
+        <td>{{ manag.branchName }}</td>
+        <td><input type="button" (click)="toEdit(manag)" value="🖋️"/>        </td>
+        <td><input type="button" (click)="deleteManager(manag._id)" value="🗑️"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <button (click)="changeAddFlag()">הוסף מנהל סניף</button>
+
+<form *ngIf="flagAdd">
+    <p>הוספת מנהל סניף</p>
+    <input type="text" placeholder="הכנס שם פרטי" #firstname/>
+    <input type="text" placeholder="הכנס שם משפחה" #last/>
+    <input type="text" placeholder="הכנס שם משתמש" #user/>
+    <input type="text" placeholder="הכנס סיסמא" #pass/>
+    <select  (change)="saveBranch($event)">
+        <option matInput *ngFor="let branch of branches" [value]="branch.name">{{branch.name}}</option>
+    </select>
+<input type="button" value="הוספה" (click)="addmanager(firstname.value,last.value,user.value,pass.value)"/>
+</form>
+
+
+<form *ngIf="flagEdit">
+    <p>עריכת מנהל סניף</p>
+    <input type="text" value="{{managerToEdit.firstName}}" #firstname/>
+    <input type="text" value="{{managerToEdit.lastName}}" #last/>
+    <input type="text" value="{{managerToEdit.userName}}" #user/>
+    <input type="text" value="{{managerToEdit.password}}" #pass/>
+    <select  (change)="saveBranch($event)">
+        <option matInput *ngFor="let branch of branches" [value]="branch.name">{{branch.name}}</option>
+    </select>
+<input type="button" value="עריכה" (click)="editmanager(firstname.value,last.value,user.value,pass.value)"/>
+</form>
+

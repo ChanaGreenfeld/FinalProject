@@ -31,7 +31,7 @@ constructor(private userServ:UsersService, private router:Router) { }
     }
 
     this.userServ.addUser(user).subscribe(res=>{
-this.router.navigate([''])
+      this.router.navigate([''])
 
     })
   }
