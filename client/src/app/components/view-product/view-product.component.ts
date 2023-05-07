@@ -5,12 +5,21 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { ShoppingListService } from 'src/app/services/shopping-list.service'
 import { UsersService } from 'src/app/services/users.service'
 
+// ==== TODO ==== //
+// import { products as _products } from 'src/app/objects'
+
 @Component({
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
   styleUrls: ['./view-product.component.css'],
 })
 export class ViewProductComponent implements OnInit {
+  
+  // ==== TODO ==== //
+  // products: Array<any> = _products
+  // filteredProducts: Array<any> = _products
+  filteredProducts: Array<any> = []
+
   products: Array<any> =[]
   pageNo: number = 1
   pageSize: number = 20
@@ -18,17 +27,28 @@ export class ViewProductComponent implements OnInit {
   pageSizeForCategory: number = 12
   allOrCatBool: boolean = false
   showCategory: boolean = true
+  category: string = ''
 
   constructor(
     private productServ: ProductsService,
     private route: ActivatedRoute,
     private router: Router,
-    private shoppingListServ:ShoppingListService,
-    private userServ:UsersService
-  ) {}
+    private shoppingListServ: ShoppingListService,
+    private userServ: UsersService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    
+  // ==== TODO ==== //
+    // this.activatedRoute.queryParams.subscribe(params => {
+    //   if (this.category !== params['category']) {
+    //     this.category = params['category'];
+    //     this.filterByCategory(this.category)
+    //   }
+    // });
+  }
 
   ngOnInit(): void {
-    
+
     this.route.queryParams.subscribe((params) => {
       const category = params['category']
       this.pageNo = 1
@@ -44,6 +64,12 @@ export class ViewProductComponent implements OnInit {
     })
   }
 
+  // ==== TODO ==== //
+  // filterByCategory(category: string) {
+  //   category == 'all' ? this.filteredProducts = this.products :
+  //     this.filteredProducts = [this.products.find(item => item.nameCategory == category)];
+  // }
+
   getProductsByCategory(event: any) {
     this.showCategory = true
     this.productServ.allOrCat = event.target.value
@@ -51,20 +77,20 @@ export class ViewProductComponent implements OnInit {
   }
 
 
-  addToshopping(product:arrProduct3){
-    if(this.userServ.currentUser){
-      const index =  this.shoppingListServ.shoppingList.indexOf(product);
-      if(index==-1){
-        product.item=1
-         this.shoppingListServ.shoppingList.push(product)
+  addToshopping(product: arrProduct3) {
+    if (this.userServ.currentUser) {
+      const index = this.shoppingListServ.shoppingList.indexOf(product);
+      if (index == -1) {
+        product.item = 1
+        this.shoppingListServ.shoppingList.push(product)
       }
-      else{
-        this.shoppingListServ.shoppingList[index].item=this.shoppingListServ.shoppingList[index].item+1;
+      else {
+        this.shoppingListServ.shoppingList[index].item = this.shoppingListServ.shoppingList[index].item + 1;
       }
       this.shoppingListServ.total += product.price
       alert("מוצר נוסף בהצלחה")
     }
-    else{
+    else {
       this.router.navigate(['login'])
     }
   }

@@ -1,5 +1,5 @@
 
-<select dir="rtl" *ngIf="showCategory" (change)="getProductsByCategory($event)">
+<!-- <select dir="rtl" *ngIf="showCategory" (change)="getProductsByCategory($event)">
   <option value="box">משחקי קופסא וחברה</option>
   <option value="puzzle">משחקי פאזלים</option>
   <option value="summer">קיץ</option>
@@ -11,9 +11,9 @@
   <option value="dolls">בובות , בתי בובות ואביזרי משחק</option>
   <option value="YardGames">משחקי חצר</option>
   <option value="playingCards">משחקי קלפים</option>
-</select>
+</select> -->
 
-<table dir="rtl" *ngIf="products.length > 0">
+<!-- <table dir="rtl" *ngIf="products.length > 0">
   <thead>
     <tr>
       <th>שם מוצר</th>
@@ -55,7 +55,17 @@
             <a class="page-link" href="javascript:void(0);" (click)="setPageNoCat(pageNo + 1); scrollToTop()">Next</a>
 
     </ul>
-</nav>
+</nav> -->
+
+<div class="wrap-categories" *ngFor="let item of filteredProducts">
+  <h2 class="category-title">{{item?.nameCategory}}</h2>
+  <label class="desc">
+    משחקי ספורט ומתקני חצר מוסיפים צבע ושעות הנאה לילדים, למשפחה ולחברים המתארחים בחצר הבית. משחקי חצר לילדים הם דרך מצוינת לנצל את השטח שלכם בבית ולגרום לילדים להתנתק מהמסכים ולעודד אותם לבצע פעילות גופנית. אצלנו מבחר גדול של מוצרים לחצר ומשחקי ספורט, מחפשים איך לשדרג את החצר? סננו לפי קטגוריה ותמצאו מוצרים כמו טרמפולינה לחצר, שער כדורגל, סל לכדורסל, בריכות כדורים לתינוקות, אוהל משחק ועוד מוצרים רבים.
+  </label>
+  <label class="count">{{item?.products.length}} פריטים</label>
+  <product *ngFor="let product of item.products" [product]="product"></product>
+</div>
+
 <div class="pagination" *ngIf="allOrCatBool">
   <button [disabled]="pageNo === 1" (click)="setPageNo(pageNo - 1); scrollToTop()">Prev</button>
   <button [disabled]="pageNo === i" *ngFor="let i of getPages()" (click)="setPageNo(i); scrollToTop()">{{ i }}</button>

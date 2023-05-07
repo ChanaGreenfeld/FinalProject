@@ -1,0 +1,87 @@
+<div class="header">
+    <div class="navbar navbar-1">
+        <button class="nav" [matMenuTriggerFor]="menuCategory">קטגוריות</button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <a class="nav" routerLink="/viewproducts" [queryParams]=" { category: 'all' }">toysWay</a>
+        <mat-divider [vertical]="true"></mat-divider>
+        <button class="nav" [matMenuTriggerFor]="menuAge">גיל</button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <a class="nav" routerLink="/giftCard">Gift Card</a>
+        <mat-divider [vertical]="true"></mat-divider>
+        <a class="nav" routerLink="/sale">Sale</a>
+    </div>
+
+    <img src="../../../assets/logo-project.jpg" />
+
+    <div class="navbar navbar-2">
+
+        <div class="search-box nav not-hover-effect" (keyup)="showSearchBox=true">
+            <mat-icon *ngIf="!showSearchBox" (click)="showSearchBox=true" #searchIcon>search</mat-icon>
+            <mat-icon *ngIf="showSearchBox" (click)="close()" #searchIcon>close</mat-icon>
+            <input type="text" placeholder="אני רוצה לחפש..." [(ngModel)]="value" (input)="searchFilter($event)"
+                #searchInput />
+        </div>
+        <div class="wrap-actions" *ngIf="!showSearchBox">
+
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="nav" routerLink="/login"><mat-icon>account_circle</mat-icon></a>
+            <!-- <a routerLink="/login">👤</a> -->
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="nav" routerLink="/shoppingList"><mat-icon>shopping_cart</mat-icon></a>
+            <!-- <a routerLink="/shoppingList">🛒</a> -->
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="nav" routerLink="/branches"><mat-icon>location_on</mat-icon>
+                <label>סניפים</label>
+            </a>
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="nav" routerLink="/about">אודות</a>
+        </div>
+    </div>
+
+    <mat-menu #menuCategory="matMenu">
+        <a mat-menu-item class="button" value="box" routerLink="/viewproducts" [queryParams]="{category:'box'}">משחקי קופסא וחברה</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="puzzle" routerLink="/viewproducts" [queryParams]="{category:'puzzle'}">משחקי פאזלים</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="summer" routerLink="/viewproducts" [queryParams]="{category:'summer'}">קיץ</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="trains&Vehicles" routerLink="/viewproducts" [queryParams]="{category:'trains&Vehicles'}">כלי רכב , רכבות וחניונים</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="Bicycle&scooter" routerLink="/viewproducts" [queryParams]="{category:'Bicycle&scooter'}">אופניים , קורקינטים וממונעים לילדים</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="babys" routerLink="/viewproducts" [queryParams]="{category:'babys'}">צעצועים וציוד תינוקות ופעוטות</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="AssemblyGames" routerLink="/viewproducts" [queryParams]="{category:'AssemblyGames'}">משחקי קוביות והרכבה</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="remote" routerLink="/viewproducts" [queryParams]="{category:'remote'}">על שלט</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="dolls" routerLink="/viewproducts" [queryParams]="{category:'dolls'}">בובות , בתי בובות ואביזרי משחק</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="YardGames" routerLink="/viewproducts" [queryParams]="{category:'YardGames'}">משחקי חצר</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="playingCards" routerLink="/viewproducts" [queryParams]="{category:'playingCards'}">משחקי קלפים</a>
+    </mat-menu>
+
+    <mat-menu #menuAge="matMenu">
+        <button mat-menu-item value="0-2" (click)="age($event)">0-2</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="2-4" (click)="age($event)">2-4</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="4-6" (click)="age($event)">4-6</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="6-8" (click)="age($event)">6-8</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="8-10" (click)="age($event)">8-10</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="10-99" (click)="age($event)">10-99</button>
+    </mat-menu>
+
+</div>
+
+<table>
+    <tbody *ngIf="filterProducts.length > 0">
+      <tr *ngFor="let fil of  filterProducts">
+        <td (click)="productDetail(fil._id)">{{ fil.name }}</td>
+      </tr>
+    </tbody>
+</table>

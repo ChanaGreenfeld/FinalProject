@@ -1,0 +1,24 @@
+.wrap-categories {
+    direction: rtl;
+}
+
+product {
+    display: inline-block;
+    margin: 0.5rem 1rem;
+}
+
+.category-title {
+    margin-inline: 1.5rem 6rem;
+    background: #dee5f052;
+    padding: 0.5rem 1rem;
+    color: #39557c;
+}
+
+.count, .desc {
+    display: block;
+    margin: 0 4rem 1rem;
+    font-family: assistant;
+    font-size: 18px;
+    color: #39557c;
+    line-height: 26px;
+}

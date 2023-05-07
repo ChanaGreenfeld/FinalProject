@@ -21,6 +21,7 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatCardModule} from '@angular/material/card'
 import { MatDialogModule} from '@angular/material/dialog'
+import { MatDividerModule } from '@angular/material/divider'
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 import {MatSelectModule} from '@angular/material/select';
@@ -42,6 +43,8 @@ import { ProductsManagerFunctionsComponent } from './components/products-manager
 import { ViewOrdersStatusComponent } from './components/view-orders-status/view-orders-status.component';
 import { ManagerbranchmanagerComponent } from './components/managerbranchmanager/managerbranchmanager.component';
 import { AboutComponent } from './components/about/about.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ProductComponent } from './components/product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +70,8 @@ import { AboutComponent } from './components/about/about.component';
     ViewOrdersStatusComponent,
     ManagerbranchmanagerComponent,
     AboutComponent,
+    HeaderComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +92,7 @@ import { AboutComponent } from './components/about/about.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatDividerModule,
     MatSelectModule
   ],
   providers: [],

@@ -1,0 +1,105 @@
+.header {
+    display: flex;
+    text-align: center;
+    direction: rtl;
+    padding: 1rem;
+}
+
+.header img {
+    height: 140px;
+    margin-inline: auto;
+}
+
+.header .navbar {
+    background: #dee5f0;
+    border: 4px solid #fff;
+    border-radius: 5rem;
+    box-shadow: -1px 4px 12px 0 rgba(1,39,93,.26);
+    height: 3.9rem;
+    display: flex;
+    justify-content: space-around;
+    width: fit-content;
+    margin: auto;
+}
+
+.navbar .nav {
+    display: flex;
+}
+
+.navbar .nav:has(mat-icon) label {
+    padding-right: .2rem;
+}
+
+.navbar .nav, 
+.navbar .wrap-actions > .nav {
+    color: #39557c !important;
+    text-decoration: none;
+    padding: 0 1.2rem;
+    font-weight: 500;
+    padding-block: 1.2rem;
+    border: none;
+    background: none;
+    font-family: assistant;
+    font-size: 18px;
+}
+
+
+.navbar .nav:first-child,
+.navbar .wrap-actions > .nav:first-child {
+    border-radius: 0 5rem 5rem 0;
+    padding-right: 2.2rem;
+}
+
+.navbar .wrap-actions > .nav:last-child, 
+.navbar .nav:last-child {
+    border-radius: 5rem 0 0 5rem;
+    padding-left: 2.2rem;
+}
+
+.navbar mat-divider {
+    margin-block: 1rem;
+}
+
+.navbar .nav:not(.not-hover-effect):hover, 
+.navbar .wrap-actions > mat-icon:hover {
+    background-color: white;
+}
+
+.wrap-actions {
+    display: flex;
+    justify-content: space-around;
+    width: -moz-fit-content;
+}
+
+.navbar:has(>.search-box) { 
+    min-width: 23.5rem;
+}
+
+.navbar .search-box {
+    display: flex;
+    align-items: bottom;
+    padding-block: 1.2rem;
+}
+
+.navbar input {
+    border: none;
+    outline: none;
+    border-bottom: 1px #39557b solid;
+    background: none;
+    font-size: 17px;
+    font-family: assistant;
+    direction: rtl;
+    text-align: right;
+    color: #39557b;
+    width: 7rem;
+}
+
+.search-box.nav:last-child input {
+    width: 100%;
+}
+
+.navbar .search-box mat-icon {
+    color: #39557b;
+    width: fit-content;
+    height: fit-content;
+}
