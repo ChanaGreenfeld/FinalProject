@@ -19,7 +19,8 @@ export class ManagerbranchmanagerComponent implements OnInit {
   selectedBranch:string
   currentBranch:string
 
-  constructor(private manaerServ:ManagersService , private branchSer:BranchesService) {   }
+
+  constructor(private manaerServ:ManagersService , private branchSer:BranchesService ) {   }
   ngOnInit(): void {
     this.manaerServ.getAllManagers().subscribe(res=>{
       this.managers=res
@@ -74,7 +75,6 @@ export class ManagerbranchmanagerComponent implements OnInit {
       alert("מנהל סניף נוסף בהצלחה")
       this.ngOnInit()
     })
-
   }
-
+ 
 }

@@ -4,7 +4,6 @@ import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { User, currentUser } from '../classes/user';
 import { BranchesService } from './branches.service';
-import { ShoppingListComponent } from '../components/shopping-list/shopping-list.component';
 import { ShoppingListService } from './shopping-list.service';
 import { ProductsService } from './products.service';
 import { Manager } from '../classes/manager';
@@ -14,7 +13,7 @@ import { Manager } from '../classes/manager';
 })
 export class UsersService {
 
-  currentUser:currentUser
+  currentUser:any
 
   mainManager:Manager={
     userName:"manager",
@@ -82,10 +81,13 @@ export class UsersService {
       }
     }
 
-    return this.httpClient.post< Array<User>>(`${environment.userUrl}/EditUserShoppingList`,add).pipe(tap(res=>{
+    return this.httpClient.post<Array<User>>(`${environment.userUrl}/EditUserShoppingList`,add).pipe(tap(res=>{
 
     }))
   }
 
+  getOrderByBranchName(branch:string):Observable<any>{
+    return this.httpClient.get<any>(`${environment.userUrl}/getBranchByName/`+branch)
+  }
 
 }

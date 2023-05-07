@@ -41,3 +41,19 @@ export class currentUser{
        
     ) {   }
 }  
+export class order{
+  
+    constructor(
+        public id:string,
+       public fullName :string,
+       public shoppingList: [{
+        status: String,
+        branch: String,
+        numBuild:Number,
+        date:String,
+        shoppingListProducts:[{
+            "id":String
+        }]
+    }]
+    ) {   }
+}  

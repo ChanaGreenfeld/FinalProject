@@ -19,11 +19,13 @@ import { CategoryManagerFunctionsComponent } from './components/category-manager
 import { ViewOrdersStatusComponent } from './components/view-orders-status/view-orders-status.component';
 import { ManagerbranchmanagerComponent } from './components/managerbranchmanager/managerbranchmanager.component';
 import { BranchManagerComponent } from './components/branch-manager/branch-manager.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full' },
   {path:"viewproducts",component:ViewProductComponent,title: 'מוצרים Toys Way'},  
   {path:"branches",component:BranchComponent, title: 'סניפי הרשת'},
+  {path:"about",component:AboutComponent, title: 'אודות'},
   {path:"productDetails",component:ProductDetailComponent, title: 'פרטי מוצר'},
   {path:"age",component:AgeComponent, title: 'תוצאות חיפוש לפי גיל'},
   {path:"sale",component:SaleComponent, title: 'תוצאות חיפוש לפי  מוצרים בהנחה'},
@@ -32,12 +34,14 @@ const routes: Routes = [
   {path:"forgotPass",component:ForgotPasswordComponent, title: 'שכחתי סיסמא'},
   {path:"register",component:RegisterComponent, title: 'הרשמה'},
   {path:"manager",component:ManagerComponent, title: 'מנהל'},
-  {path:"mainManager",component:MainManagerComponent ,  title: 'מנהל ראשי' },
-  {path:"viewOrdersStatus",component:ViewOrdersStatusComponent,title: 'צפייה בסטטוס הזמנות'},
-  {path:"managerCategory",component:CategoryManagerFunctionsComponent, title: 'ניהול קטגוריות'},
-  {path:"managerbranchmanager",component:ManagerbranchmanagerComponent, title: 'ניהול מנהלי סניף'},
-  {path:"managerProducts",component:ProductsManagerFunctionsComponent, title: 'ניהול מוצרים'},
-  {path:"managebranches",component:BranchManagerComponent, title: 'ניהול סניפים'},
+  {path:"mainManager",component:MainManagerComponent ,  title: 'מנהל ראשי' ,children:[
+    {path:"viewOrdersStatus",component:ViewOrdersStatusComponent,title: 'צפייה בסטטוס הזמנות'},
+    {path:"managerCategory",component:CategoryManagerFunctionsComponent, title: 'ניהול קטגוריות'},
+    {path:"managerbranchmanager",component:ManagerbranchmanagerComponent, title: 'ניהול מנהלי סניף'},
+    {path:"managerProducts",component:ProductsManagerFunctionsComponent, title: 'ניהול מוצרים'},
+    {path:"managebranches",component:BranchManagerComponent, title: 'ניהול סניפים'},
+  ]},
+ 
   {path:"shoppingList",component:ShoppingListComponent, title: 'סל קניות'},
   {path:"payment",component:PaymentComponent, title: 'תשלום'},
   {path:"**",component:PageNotFoundComponent, title: 'דף לא קיים'},

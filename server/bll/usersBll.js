@@ -10,16 +10,36 @@ const getUserById = async(code) => {
     return await usersModel.findById(code) 
 };
 
+const getAllBranch=async()=>{
+    const users = await usersModel.find({});
+    const result = users.map(user => {
+      return {
+        fullName: user.firstName+" "+user.lastName,
+        shoppingList: user.shoppingList
+      }
+    })
+    return result;
+}
+
 const getUserByEmail=async(mail)=>{
     return await usersModel.findOne({ email: mail })
 }
 
 const getByBranch=async(branch)=>{
-    return await usersModel.find({
-        "shoppingList": {
-          $elemMatch: { "branch": branch }
-        }
+    const users = await usersModel.find({});
+    const filteredUsers = users.filter(user => {
+      const shoppingListArray = user.shoppingList.filter(shoppingList => shoppingList.branch === branch);
+      return shoppingListArray.length > 0;
+    });
+    const result = filteredUsers.map(user => {
+      const filteredShoppingList = user.shoppingList.filter(shoppingList => shoppingList.branch === branch);
+      return {
+        id:user._id,
+        fullName: user.firstName+" "+user.lastName,
+        shoppingList: filteredShoppingList
+      }
     })
+    return result;
 }
 
 
@@ -63,4 +83,4 @@ const deleteUser =async (code) => {
 };
 
 
-module.exports = { getAll, getUserById ,getByBranch , getUserByEmail ,editUser,editUserShoppingList ,addUser, deleteUser};
+module.exports = { getAll, getUserById ,getAllBranch ,getByBranch , getUserByEmail ,editUser,editUserShoppingList ,addUser, deleteUser};

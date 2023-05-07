@@ -1,0 +1,20 @@
+<table dir="rtl" *ngIf="ordersToView.length > 0">
+    <thead>
+      <tr>
+        <th>שם מלא</th>
+        <th>שם סניף</th>
+        <th>תאריך הזמנה</th>
+        <th>סטטוס הזמנה</th>
+        <th>פריטים שהוזמנו</th>
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let ord of ordersToView" class="slide-up-fade-in">
+        <td>{{ ord.fullName }}</td>
+        <td>{{ ord.branch }}</td>
+        <td>{{ ord.date }}</td>
+        <td>{{ ord.status }}</td>
+        <td>{{ ord.shoppingLength }}</td>
+      </tr>
+    </tbody>
+  </table>

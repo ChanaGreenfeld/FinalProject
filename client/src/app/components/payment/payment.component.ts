@@ -38,7 +38,7 @@ export class PaymentComponent implements OnInit{
     this.route.queryParams.subscribe((params) => {
       const from = params['from']
     if(from=='sh'){
-      let body =`שלום לך  ${this.currentUser.firstName + this.currentUser.lastName}  המוצרים שלך יגיעו לסניף${this.currentBranch.name}    שברחוב ${this.currentBranch.address}`+ "   התשלום בוצע בהצלחה !!    קנית " + this.shoppingList.length +"    מוצרים   בסכום :   "+this.total+"  שקלים חדשים"
+      let body =`שלום לך  ${this.currentUser.firstName +" " +this.currentUser.lastName}  המוצרים שלך יגיעו לסניף  ${this.currentBranch.name}    שברחוב  ${this.currentBranch.address}`+ "    התשלום בוצע בהצלחה !!    קנית   " + this.shoppingList.length +"    מוצרים   בסכום :   "+this.total+"  שקלים חדשים"
       this.sendServ.sendEMail("תשלום בוצע בהצלחה-קבלה" ,body , this.currentUser.email).subscribe(res=>{       
       }) 
       this.userServ.finishBuy().subscribe(res=>{

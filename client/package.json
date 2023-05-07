@@ -25,6 +25,7 @@
     "@posterno/google-maps-html-marker": "^1.0.0",
     "googlemaps": "^1.12.0",
     "ngx-google-places-autocomplete": "^2.0.5",
+    "primeng": "^16.0.0-rc.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "virtual-keyboard": "^1.30.4",

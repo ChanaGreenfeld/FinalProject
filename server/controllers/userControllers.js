@@ -21,6 +21,11 @@ router.route("/getBranchByName/:branch").get(async function(req, res){
   res.send(data)
 })
 
+router.route("/getAllBranch").get(async function(req, res){
+  let data = await userBll.getAllBranch()
+  res.send(data)
+})
+
 router.route("/GetUserByMail/:mail").get(async function(req, res){
   let mail = req.params.mail;
   let data = await userBll.getUserByEmail(mail)

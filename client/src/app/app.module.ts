@@ -41,6 +41,7 @@ import { CategoryManagerFunctionsComponent } from './components/category-manager
 import { ProductsManagerFunctionsComponent } from './components/products-manager-functions/products-manager-functions.component';
 import { ViewOrdersStatusComponent } from './components/view-orders-status/view-orders-status.component';
 import { ManagerbranchmanagerComponent } from './components/managerbranchmanager/managerbranchmanager.component';
+import { AboutComponent } from './components/about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { ManagerbranchmanagerComponent } from './components/managerbranchmanager
     ProductsManagerFunctionsComponent,
     ViewOrdersStatusComponent,
     ManagerbranchmanagerComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

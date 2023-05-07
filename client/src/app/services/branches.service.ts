@@ -10,7 +10,7 @@ import { Place } from '../classes/place';
   providedIn: 'root'
 })
 export class BranchesService {
-  currentBranch :branch={name:'',address:''}
+  currentBranch :branch =new branch('','');
   shortedWay:any
   constructor(private httpClient: HttpClient) { }
   
