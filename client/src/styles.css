@@ -28,19 +28,19 @@ label {
     border-top-color: rgb(255 255 255)
 }
 
-.mat-mdc-menu-panel .button.mat-mdc-menu-item {
+.mat-mdc-menu-panel .mat-mdc-menu-item {
     border-radius: 4rem;
 }
 
-.mat-mdc-menu-panel .button.mat-mdc-menu-item span {
+.mat-mdc-menu-panel .mat-mdc-menu-item span {
     margin-inline: auto;
 }
 
-.mat-mdc-menu-panel .button.mat-mdc-menu-item:hover {
+.mat-mdc-menu-panel .mat-mdc-menu-item:hover {
     background: white !important;
 }
 
-.mat-mdc-menu-panel .button.mat-mdc-menu-item:hover span {
+.mat-mdc-menu-panel .mat-mdc-menu-item:hover span {
     color: #e45e15 !important;
 }
 
