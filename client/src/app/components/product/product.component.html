@@ -1,7 +1,7 @@
-<div class="product" *ngIf="product">
+<div class="product" *ngIf="product" (click)="openProductDetails()">
     <img [src]="product.pic"/>
     <h3>{{product.name}}</h3>
     <label class="desc">{{product.description}}</label>
     <label class="price">{{product.price}}</label>
-    <button>הוסף לסל</button>
+    <button (click)="addToCart($event)">הוסף לסל</button>
 </div>

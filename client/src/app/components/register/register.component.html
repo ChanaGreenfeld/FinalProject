@@ -1,4 +1,4 @@
-<form (ngSubmit)="register($event)">
+<!-- <form (ngSubmit)="register($event)">
     <input type="text" placeholder="שם פרטי" name="firstName">
     <input type="text" placeholder="שם משפחה" name="lastname">
     <input type="text" placeholder="טלפון" name="phone">
@@ -9,4 +9,72 @@
     <input type="text" placeholder="שם משתמש" name="username">
     <input type="text" placeholder="סיסמא" name="password">
     <button type="submit">הרשמה</button>
-  </form>
+  </form> -->
+<form class="container" (ngSubmit)="register($event)">
+
+  <div class="wrap-navs">
+    <ul class="navs">
+      <li class="nav">
+        <a routerLink="/login" class="tablinks">
+          <mat-icon>account_circle</mat-icon>
+          <label>התחברות</label>
+        </a>
+      </li>
+      <li class="nav">
+        <a routerLink="/register" class="tablinks active">
+          <mat-icon>star</mat-icon>
+          <label>הרשמה</label>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <h1>ברוכים הבאים!</h1>
+  <h2 class="subtitle">
+    <mat-icon>account_circle</mat-icon>
+    <label>הרשמה</label>
+  </h2>
+  <div class="fields">
+    <div class="field">
+      <b>שם פרטי</b>
+      <input type="text" placeholder="שם פרטי" name="firstName" required>
+    </div>
+    <div class="field">
+      <b>שם משפחה</b>
+      <input type="text" placeholder="שם משפחה" name="lastname" required>
+    </div>
+    <div class="field">
+      <b>טלפון</b>
+      <input type="text" placeholder="טלפון" name="phone">
+    </div>
+    <div class="field">
+      <b>מייל</b>
+      <input type="text" placeholder="מייל" name="mail">
+    </div>
+
+    <div class="address">
+      <div class="field">
+        <b>רחוב</b>
+        <input type="text" placeholder="רחוב " name="street">
+      </div>
+      <div class="field number-field">
+        <b>מספר בניין</b>
+        <input type="number" placeholder="123" name="numbuild">
+      </div>
+    </div>
+
+    <div class="field">
+      <b>עיר</b>
+      <input type="text" placeholder="עיר" name="city">
+    </div>
+    <div class="field">
+      <b>שם משתמש</b>
+      <input type="text" placeholder="שם משתמש" name="username" required>
+    </div>
+    <div class="field">
+      <b>סיסמא</b>
+      <input type="password" placeholder="סיסמא" name="password" required>
+    </div>
+    <button type="submit" class="register-button">כניסה</button>
+  </div>
+</form>

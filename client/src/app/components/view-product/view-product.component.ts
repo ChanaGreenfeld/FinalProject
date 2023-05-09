@@ -6,7 +6,7 @@ import { ShoppingListService } from 'src/app/services/shopping-list.service'
 import { UsersService } from 'src/app/services/users.service'
 
 // ==== TODO ==== //
-// import { products as _products } from 'src/app/objects'
+import { products as _products } from 'src/app/objects'
 
 @Component({
   selector: 'app-view-product',
@@ -16,11 +16,11 @@ import { UsersService } from 'src/app/services/users.service'
 export class ViewProductComponent implements OnInit {
   
   // ==== TODO ==== //
-  // products: Array<any> = _products
-  // filteredProducts: Array<any> = _products
-  filteredProducts: Array<any> = []
+  products: Array<any> = _products
+  filteredProducts: Array<any> = _products
+  // filteredProducts: Array<any> = []
 
-  products: Array<any> =[]
+  // products: Array<any> =[]
   pageNo: number = 1
   pageSize: number = 20
   totalItems: number = 0
@@ -39,12 +39,12 @@ export class ViewProductComponent implements OnInit {
   ) {
     
   // ==== TODO ==== //
-    // this.activatedRoute.queryParams.subscribe(params => {
-    //   if (this.category !== params['category']) {
-    //     this.category = params['category'];
-    //     this.filterByCategory(this.category)
-    //   }
-    // });
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (this.category !== params['category']) {
+        this.category = params['category'];
+        this.filterByCategory(this.category)
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -65,10 +65,10 @@ export class ViewProductComponent implements OnInit {
   }
 
   // ==== TODO ==== //
-  // filterByCategory(category: string) {
-  //   category == 'all' ? this.filteredProducts = this.products :
-  //     this.filteredProducts = [this.products.find(item => item.nameCategory == category)];
-  // }
+  filterByCategory(category: string) {
+    category == 'all' ? this.filteredProducts = this.products :
+      this.filteredProducts = [this.products.find(item => item.nameCategory == category)];
+  }
 
   getProductsByCategory(event: any) {
     this.showCategory = true

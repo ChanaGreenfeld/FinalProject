@@ -2,7 +2,19 @@
     display: flex;
     text-align: center;
     direction: rtl;
-    padding: 1rem;
+
+    position: fixed;
+    z-index: 99;
+    background-color: #ffffff8f;
+    right: 0;
+    left: 0;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.save-place {
+    height: 11rem;
+    width: 100vw;
 }
 
 .header img {
@@ -102,4 +114,16 @@
     color: #39557b;
     width: fit-content;
     height: fit-content;
+}
+
+@media screen and (max-width: 1490px) {
+    .gift-card-txt {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1420px) {
+    .search-input {
+        display: none;
+    }
 }

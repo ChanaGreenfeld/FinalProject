@@ -45,6 +45,7 @@ import { ManagerbranchmanagerComponent } from './components/managerbranchmanager
 import { AboutComponent } from './components/about/about.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductComponent } from './components/product/product.component';
+import { CountSelectionComponent } from './components/count-selection/count-selection.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { ProductComponent } from './components/product/product.component';
     AboutComponent,
     HeaderComponent,
     ProductComponent,
+    CountSelectionComponent,
   ],
   imports: [
     BrowserModule,

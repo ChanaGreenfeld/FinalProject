@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { categories } from 'src/app/objects';
 import { ProductsService } from 'src/app/services/products.service';
@@ -13,14 +13,16 @@ export class HeaderComponent {
   filterProducts: Array<any> = []
   productsToSearch: Array<any> = []
 
+  @ViewChild('searchInput') searchInput: ElementRef
+
   value: string = ''
   showSearchBox: boolean = false
-  
-  products:Array<any>=[]
+
+  products: Array<any> = []
 
   categories: any = categories
 
-  constructor(private productServ: ProductsService, private router:Router) { }
+  constructor(private productServ: ProductsService, private router: Router) { }
 
   searchFilter(event: any): void {
     this.searchWord = event.target.value
@@ -44,17 +46,25 @@ export class HeaderComponent {
       this.filterProducts = this.productsToSearch;
     }
   }
-  
-  productDetail(id:number){
+
+  productDetail(id: number) {
     this.router.navigate(['productDetails'], { queryParams: { id: id } })
+  }
+
+  moveForSearch() {
+    this.showSearchBox = true
+    this.searchInput.nativeElement.style.display = 'inline'
   }
 
   close() {
     this.value = ''
     this.showSearchBox = false
+    if (window.innerWidth <= 1420) {
+      this.searchInput.nativeElement.style.display = 'none'
+    }
   }
 
-  age(event:any){
+  age(event: any) {
     let age = event.target.value;
     this.productServ.getProductsByAge(age)
       .subscribe((data: any) => {

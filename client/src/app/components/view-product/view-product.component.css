@@ -1,5 +1,6 @@
 .wrap-categories {
     direction: rtl;
+    padding-inline: 4rem;
 }
 
 product {
@@ -16,9 +17,10 @@ product {
 
 .count, .desc {
     display: block;
-    margin: 0 4rem 1rem;
+    margin: 0 4rem 1rem 8rem;
     font-family: assistant;
     font-size: 18px;
     color: #39557c;
     line-height: 26px;
+    
 }

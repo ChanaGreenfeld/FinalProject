@@ -1,0 +1,18 @@
+.count-selection {
+    width: fit-content;
+    border: solid 2px #004ebc;
+    border-radius: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.count-selection button {
+    width: 40px !important;
+    height: 40px !important;
+    padding: 6px !important;
+}
+
+.count-selection label {
+    min-width: 1.5rem;
+    text-align: center;
+}

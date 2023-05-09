@@ -1,4 +1,4 @@
-
+<!-- 
 <table dir="rtl">
     <thead>
       <tr>
@@ -27,6 +27,34 @@
         <td> <input type="button" (click)="addToshopping()" value="הוסף לסל"/></td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
 
-  <a routerLink="/viewproducts" [queryParams]=" { category: 'all' }"  class="tablinks" id="b">חזרה לצפייה במוצרים</a>
+<div class="product-details" *ngIf="producta">
+  <div class="right-side">
+
+    <h1>{{producta.name}}</h1>
+
+    <div class="desc">
+      <h3>תאור מוצר</h3>
+      <p>{{producta.description}}</p>
+    </div>
+
+    <div class="row-display">
+
+      <div class="count">
+        <label>כמות</label>
+        <count-selection></count-selection>
+      </div>
+
+      <p class="price">₪{{producta.price}}</p>
+
+    </div>
+
+    <button class="add-button">הוסף לסל</button>
+
+    <a routerLink="/viewproducts" [queryParams]=" { category: 'all' }" class="tablinks" id="b">חזרה לצפייה במוצרים <mat-icon>west</mat-icon></a>
+  </div>
+  <div class="left-side">
+    <img [src]="producta.pic" />
+  </div>
+</div>
