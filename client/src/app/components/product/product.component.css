@@ -9,6 +9,7 @@
     width: 16rem;
     font-family: assistant;
     color: #39557c;
+    cursor: pointer;
 }
 
 .product img {
@@ -60,4 +61,23 @@
     text-align: center;
     width: 100%;
     margin-top: auto;
+}
+
+.sale {
+    position: absolute;
+    display: grid;
+    align-items: center;
+    color: white;
+    top: -11px;
+    left: -5px;
+    /* transform: rotate(-15deg); */
+}
+
+.sale img {
+    height: 4.5rem !important;
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.sale label {
+    grid-area: 1 / 1 / 2 / 2;
 }

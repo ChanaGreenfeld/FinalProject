@@ -1,0 +1,6 @@
+<div class="links">
+    <div class="c-link" *ngFor="let link of links" (click)="navigate(link.nav)">
+        <img [src]="link.image" height="130" />
+        <p>{{link.title}}</p>
+    </div>
+</div>

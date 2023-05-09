@@ -2,7 +2,13 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     width: 100vw !important;
-    overflow-x: hidden; }
+    overflow-x: hidden; text-align: right !important; direction: rtl !important;
+    font-family: assistant; }
+/* * { box-sizing: content-box !important; } */
+
+label {
+    margin-bottom: 0;
+}
 
 /* ========== mat menu =========== */
 .mat-mdc-menu-content {
@@ -36,4 +42,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 
 .mat-mdc-menu-panel .button.mat-mdc-menu-item:hover span {
     color: #e45e15 !important;
+}
+
+/* ======= swiper ========= */
+.swiper-button-prev,
+.swiper-button-next {
+    height: fit-content !important;
+    font-size: 28px;
+    color: white !important;
+    font-weight: 700;
+    margin-inline: 2rem;
 }

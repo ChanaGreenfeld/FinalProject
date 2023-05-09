@@ -23,6 +23,7 @@ import { MatCardModule} from '@angular/material/card'
 import { MatDialogModule} from '@angular/material/dialog'
 import { MatDividerModule } from '@angular/material/divider'
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import {MatBadgeModule} from '@angular/material/badge';
 
 import {MatSelectModule} from '@angular/material/select';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -46,6 +47,10 @@ import { AboutComponent } from './components/about/about.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductComponent } from './components/product/product.component';
 import { CountSelectionComponent } from './components/count-selection/count-selection.component';
+import { CarouselPicturesComponent } from './components/carousel-pictures/carousel-pictures.component';
+import { LinksComponent } from './components/links/links.component';
+import { BestSellersComponent } from './components/best-sellers/best-sellers.component';
+import { NewProductsComponent } from './components/new-products/new-products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +79,10 @@ import { CountSelectionComponent } from './components/count-selection/count-sele
     HeaderComponent,
     ProductComponent,
     CountSelectionComponent,
+    CarouselPicturesComponent,
+    LinksComponent,
+    BestSellersComponent,
+    NewProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,7 +104,8 @@ import { CountSelectionComponent } from './components/count-selection/count-sele
     MatProgressSpinnerModule,
     MatDialogModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,9 +20,11 @@ import { ViewOrdersStatusComponent } from './components/view-orders-status/view-
 import { ManagerbranchmanagerComponent } from './components/managerbranchmanager/managerbranchmanager.component';
 import { BranchManagerComponent } from './components/branch-manager/branch-manager.component';
 import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '', pathMatch: 'full' },
+  // {path: '', redirectTo: '', pathMatch: 'full' },
+  {path: '', redirectTo: '', component: HomeComponent, pathMatch: 'full' },
   {path:"viewproducts",component:ViewProductComponent,title: 'מוצרים Toys Way'},  
   {path:"branches",component:BranchComponent, title: 'סניפי הרשת'},
   {path:"about",component:AboutComponent, title: 'אודות'},

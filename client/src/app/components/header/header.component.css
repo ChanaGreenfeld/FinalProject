@@ -5,7 +5,6 @@
 
     position: fixed;
     z-index: 99;
-    background-color: #ffffff8f;
     right: 0;
     left: 0;
     width: fit-content;
@@ -17,12 +16,22 @@
     width: 100vw;
 }
 
-.header img {
-    height: 140px;
-    margin-inline: auto;
+.background {
+    height: 11rem;
+    width: 100vw;
+    background-color: #ffffff8f;
+    
+    position: fixed;
+    z-index: 98;
 }
 
-.header .navbar {
+.header .logo-img {
+    height: 140px;
+    margin-inline: auto;
+    cursor: pointer;
+}
+
+.header .c-navbar {
     background: #dee5f0;
     border: 4px solid #fff;
     border-radius: 5rem;
@@ -34,16 +43,16 @@
     margin: auto;
 }
 
-.navbar .nav {
+.c-navbar .c-nav {
     display: flex;
 }
 
-.navbar .nav:has(mat-icon) label {
+.navbar .c-nav:has(mat-icon) label {
     padding-right: .2rem;
 }
 
-.navbar .nav, 
-.navbar .wrap-actions > .nav {
+.c-navbar .c-nav, 
+.c-navbar .wrap-actions > .c-nav {
     color: #39557c !important;
     text-decoration: none;
     padding: 0 1.2rem;
@@ -56,24 +65,24 @@
 }
 
 
-.navbar .nav:first-child,
-.navbar .wrap-actions > .nav:first-child {
+.c-navbar .c-nav:first-child,
+.c-navbar .wrap-actions > .c-nav:first-child {
     border-radius: 0 5rem 5rem 0;
     padding-right: 2.2rem;
 }
 
-.navbar .wrap-actions > .nav:last-child, 
-.navbar .nav:last-child {
+.c-navbar .wrap-actions > .c-nav:last-child, 
+.c-navbar .c-nav:last-child {
     border-radius: 5rem 0 0 5rem;
     padding-left: 2.2rem;
 }
 
-.navbar mat-divider {
+.c-navbar mat-divider {
     margin-block: 1rem;
 }
 
-.navbar .nav:not(.not-hover-effect):hover, 
-.navbar .wrap-actions > mat-icon:hover {
+.c-navbar .c-nav:not(.not-hover-effect):hover, 
+.c-navbar .wrap-actions > mat-icon:hover {
     background-color: white;
 }
 
@@ -83,17 +92,17 @@
     width: -moz-fit-content;
 }
 
-.navbar:has(>.search-box) { 
+.c-navbar:has(>.search-box) { 
     min-width: 23.5rem;
 }
 
-.navbar .search-box {
+.c-navbar .search-box {
     display: flex;
     align-items: bottom;
     padding-block: 1.2rem;
 }
 
-.navbar input {
+.c-navbar input {
     border: none;
     outline: none;
     border-bottom: 1px #39557b solid;
@@ -106,14 +115,33 @@
     width: 7rem;
 }
 
-.search-box.nav:last-child input {
+.search-box.c-nav:last-child input {
     width: 100%;
 }
 
-.navbar .search-box mat-icon {
+.c-navbar .search-box mat-icon {
     color: #39557b;
     width: fit-content;
     height: fit-content;
+}
+
+.search-results {
+    position: fixed;
+    top: 6.3rem;
+    left: 1.5rem;
+    width: 33vw;
+    background: #ffffffdb;
+    border: solid 1px;
+    border-radius: 0.2rem;
+    text-align: right;
+    padding: 0.2rem 1rem;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.search-results p {
+    margin: 0;
+    text-align: center;
 }
 
 @media screen and (max-width: 1490px) {

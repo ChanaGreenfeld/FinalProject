@@ -744,3 +744,52 @@ export const cart = [{
 }
 
 ]
+
+export const general_products = [{
+    "name": "רולר בליידס לילדים 4 גלגלים",
+    "description": "מידה 30-33 - רולרים + סקטים",
+    "price": 209.9,
+    "units": 1200,
+    "pic": "assets/Bicycle&scooter/2.png",
+    "age": "10-14",
+    "populare": 1,
+    "salary": false,
+    "date": "2011-03-12T00:00:00.000Z",
+    "_id": "6446b4900aaa7b13735465c3"
+}, {
+    "name": "פלאנט",
+    "description": "מקמו את ההרים והמדבריות, פזרו את היערות, האוקיינוסים והקרחונים. מקמו את היבשות וצרו סביבה ידידותית להתפתחות חיים כדי ליצור את העולם המאוכלס ביותר!",
+    "price": 139.9,
+    "units": 96,
+    "pic": "assets/box/planet.png",
+    "age": "8+",
+    "populare": 2222314,
+    "salary": false,
+    "date": "2020-08-30T00:00:00.000Z",
+    "_id": "6446893e0aaa7b13735460cc"
+}, {
+    "name": "דיקסיט",
+    "description": "משחק שמכניס את המבע האומנותי לכל בית, באמצעות קלפים  מאוירים מלאי רבדים. במהלך המשחק, כל המשתתפים לוקחים חלק בפרשנות ופיענוח האיור ומפתחים יכולת התבוננות, הקשבה והבעה בעל פה.",
+    "price": 159.9,
+    "units": 44,
+    "pic": "assets/box/dicsit.png",
+    "age": "8+",
+    "populare": 23,
+    "salary": false,
+    "date": "2020-08-30T00:00:00.000Z",
+    "_id": "6446899e0aaa7b13735460d0"
+},
+{
+    "name": "TAKI",
+    "description": "המשחק האהוב והמוכר עם קלפי הפעולה ועם קצת מזל!",
+    "price": 59.9,
+    "units": 1000,
+    "pic": "assets/playingCards/taki.png",
+    "age": "6+",
+    "populare": 1,
+    "salary": false,
+    "date": "1950-12-01T00:00:00.000Z",
+    "_id": "6446957a0aaa7b1373546101"
+}
+
+]

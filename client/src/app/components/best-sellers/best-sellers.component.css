@@ -1,0 +1,21 @@
+.best-sellers {
+    text-align: center;
+    padding: 3rem;
+    color: #39557c;
+    background-color: whitesmoke;
+}
+
+.title {
+    margin: 1rem 0 3rem;
+    font-size: 36px;
+}
+
+.wrap-products {
+    display: flex;
+    justify-content: center;
+}
+
+product {
+    margin-inline-end: .7rem;
+    transform: scale(0.95)
+}

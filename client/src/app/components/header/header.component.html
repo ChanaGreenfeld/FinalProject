@@ -1,41 +1,54 @@
 <div class="header">
-    <div class="navbar navbar-1">
-        <button class="nav" [matMenuTriggerFor]="menuCategory">קטגוריות</button>
+    <div class="c-navbar c-navbar-1">
+        <button class="c-nav" [matMenuTriggerFor]="menuCategory">קטגוריות</button>
         <mat-divider [vertical]="true"></mat-divider>
-        <a class="nav" routerLink="/viewproducts" [queryParams]=" { category: 'all' }">toysWay</a>
+        <a class="c-nav" routerLink="/viewproducts" [queryParams]=" { category: 'all' }">toysWay</a>
         <mat-divider [vertical]="true"></mat-divider>
-        <button class="nav" [matMenuTriggerFor]="menuAge">גיל</button>
+        <button class="c-nav" [matMenuTriggerFor]="menuAge">גיל</button>
         <mat-divider [vertical]="true"></mat-divider>
-        <a class="nav" routerLink="/giftCard">
+        <a class="c-nav" routerLink="/giftCard">
             <mat-icon>card_giftcard</mat-icon>
             <label class="gift-card-txt">Gift Card</label>
         </a>
         <mat-divider [vertical]="true"></mat-divider>
-        <a class="nav" routerLink="/sale">Sale</a>
+        <a class="c-nav" routerLink="/sale">Sale</a>
     </div>
 
-    <img src="../../../assets/logo-project-trans.png" />
+    <img class="logo-img" src="../../../assets/logo-project-trans.png" (click)="navigateToHome()" />
 
-    <div class="navbar navbar-2">
+    <div class="c-navbar c-navbar-2">
 
-        <div class="search-box nav not-hover-effect" (keyup)="showSearchBox=true">
+        <div class="search-box c-nav not-hover-effect" (keyup)="showSearchBox=true">
             <mat-icon *ngIf="!showSearchBox" (click)="moveForSearch()">search</mat-icon>
             <mat-icon *ngIf="showSearchBox" (click)="close()">close</mat-icon>
             <input type="text" class="search-input" placeholder="אני רוצה לחפש..." [(ngModel)]="value" (input)="searchFilter($event)"
                 #searchInput />
+
+                <table *ngIf="showSearchBox" class="search-results">
+                    <tbody>
+                        <tr *ngFor="let fil of  filterProducts">
+                            <td (click)="productDetail(fil._id)">{{ fil.name }}</td>
+                        </tr>
+                        <tr *ngIf="filterProducts.length==0">
+                            <td>
+                                <p>לא נמצאו תוצאות מתאימות.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
         <div class="wrap-actions" *ngIf="!showSearchBox">
 
             <mat-divider [vertical]="true"></mat-divider>
-            <a class="nav" routerLink="/login"><mat-icon>account_circle</mat-icon></a>
+            <a class="c-nav" routerLink="/login"><mat-icon>account_circle</mat-icon></a>
             <mat-divider [vertical]="true"></mat-divider>
-            <a class="nav" routerLink="/shoppingList"><mat-icon>shopping_cart</mat-icon></a>
+            <a class="c-nav" routerLink="/shoppingList"><mat-icon [matBadge]="count" matBadgeColor="warn">shopping_cart</mat-icon></a>
             <mat-divider [vertical]="true"></mat-divider>
-            <a class="nav" routerLink="/branches"><mat-icon>location_on</mat-icon>
+            <a class="c-nav" routerLink="/branches"><mat-icon>location_on</mat-icon>
                 <label>סניפים</label>
             </a>
             <mat-divider [vertical]="true"></mat-divider>
-            <a class="nav" routerLink="/about">אודות</a>
+            <a class="c-nav" routerLink="/about">אודות</a>
         </div>
     </div>
 
@@ -90,12 +103,13 @@
 
 </div>
 
+<div class="background"></div>
 <div class="save-place"></div>
 
-<table>
+<!-- <table>
     <tbody *ngIf="filterProducts.length > 0">
         <tr *ngFor="let fil of  filterProducts">
             <td (click)="productDetail(fil._id)">{{ fil.name }}</td>
         </tr>
     </tbody>
-</table>
+</table> -->

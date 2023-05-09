@@ -2,6 +2,11 @@
     <img [src]="product.pic"/>
     <h3>{{product.name}}</h3>
     <label class="desc">{{product.description}}</label>
-    <label class="price">{{product.price}}</label>
+    <label class="price">₪{{product.price}}</label>
     <button (click)="addToCart($event)">הוסף לסל</button>
+
+    <div class="sale" *ngIf="isSale">
+        <img src="assets/blue-star.png">
+        <label>SALE</label>
+    </div>
 </div>

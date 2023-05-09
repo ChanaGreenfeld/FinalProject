@@ -8,12 +8,12 @@ import { UsersService } from 'src/app/services/users.service'
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private  userServ:UsersService) {}
+  constructor(private userServ: UsersService) { }
 
   ngOnInit(): void {
     // this.productServ.getProductsPopular();
     // this.productServ.getProductsByDate();
-    }
+  }
 
 
 

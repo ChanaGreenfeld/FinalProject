@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent {
   @Input() product: any = null
+  @Input() isSale: boolean = false
 
   constructor (private router: Router) { }
 

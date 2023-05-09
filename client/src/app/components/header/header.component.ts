@@ -17,6 +17,7 @@ export class HeaderComponent {
 
   value: string = ''
   showSearchBox: boolean = false
+  count: number = 0
 
   products: Array<any> = []
 
@@ -70,6 +71,10 @@ export class HeaderComponent {
       .subscribe((data: any) => {
         this.products = data;
       })
+  }
+
+  navigateToHome() {
+    this.router.navigate([''])
   }
 
 }

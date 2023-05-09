@@ -1,0 +1,21 @@
+.links {
+    display: flex;
+    justify-content: center;
+    padding-block: 3rem;
+    text-align: center;
+    font-size: 20px;
+    color: #39557c;
+    font-weight: 600;
+}
+
+.c-link {
+    width: fit-content;
+    margin-inline: 0.7rem;
+}
+
+.img {
+    height: 10rem;
+    width: 10rem;
+    background-size: cover;
+    background-position: center;
+}

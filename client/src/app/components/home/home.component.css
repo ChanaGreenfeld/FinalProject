@@ -6,3 +6,8 @@
     padding: 10px;
     border: 1px solid #ccc;
 }
+
+.img {
+    background-size: cover;
+    background-position: center;
+}
